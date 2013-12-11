@@ -9,14 +9,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<%= render 'layouts/login' %>
 <!-- Header //-->
 <%= render 'layouts/header' %>
+<%= render 'layouts/login' %>
+<%= render 'layouts/msg' %>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
 <!-- Body //-->
 <div class="container">
+
   <%= yield %>
 </div>
 <!-- Footer //-->

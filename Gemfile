@@ -57,5 +57,12 @@ group :development do
   gem 'meta_request'
 end
 
+gem 'figaro'
+
 gem 'devise'
+gem 'omniauth-twitter'
+
+
+gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'ransack'
 
