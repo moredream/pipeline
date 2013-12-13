@@ -61,7 +61,9 @@ gem 'figaro'
 
 gem 'devise'
 gem 'omniauth-twitter'
-
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-linkedin-oauth2'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'ransack'

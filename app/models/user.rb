@@ -9,13 +9,20 @@ class User < ActiveRecord::Base
 
       user.provider = auth.provider
       user.uid = auth.uid
+      user.email =  auth.info.email || "#{auth.uid}@notdefined.com"
+      user.username = auth.info.nickname || auth.info.name
+      user.image = auth.info.image
+    end
+  end
 
-      if auth.info.email.blank?
-        user.email =  "#{auth.uid}@notdefined.com"
-      else
-        user.email =  auth.info.email
-      end
-      user.username = auth.info.nickname
+  def self.find_for_google_oauth2(auth)
+
+    where(auth.slice(:provider, :uid)).first_or_create do |user|
+
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.email =  auth.info.email
+      user.username = auth.info.name
     end
   end
 
