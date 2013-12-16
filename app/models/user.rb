@@ -15,17 +15,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.find_for_google_oauth2(auth)
-
-    where(auth.slice(:provider, :uid)).first_or_create do |user|
-
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.email =  auth.info.email
-      user.username = auth.info.name
-    end
-  end
-
   def self.new_with_session(params, session)
     if session["devise.user_attributes"]
       new(session["devise.user_attributes"]) do |user|
