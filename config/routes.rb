@@ -1,5 +1,14 @@
 Pipeline::Application.routes.draw do
 
+  # get "about", to: 'info#about', as: "about"
+  # get "privacy", to: 'info#privacy', as: "privacy"
+  # get "terms", to: 'info#terms' ,as: "terms"
+  # get "contact", to: 'info#contact', as: "contact"
+
+  %w[about privacy terms contact].each do |page|
+    get page, controller: "info", action: page
+  end
+
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
