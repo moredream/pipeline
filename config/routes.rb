@@ -1,10 +1,6 @@
 Pipeline::Application.routes.draw do
 
-  # get "about", to: 'info#about', as: "about"
-  # get "privacy", to: 'info#privacy', as: "privacy"
-  # get "terms", to: 'info#terms' ,as: "terms"
-  # get "contact", to: 'info#contact', as: "contact"
-
+  get  "members/:id" => 'members#show'
   %w[about privacy terms contact].each do |page|
     get page, controller: "info", action: page
   end
@@ -17,6 +13,7 @@ Pipeline::Application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   resources :programs
+  resources :users
 
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
