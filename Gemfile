@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.2'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -67,4 +67,14 @@ gem 'omniauth-linkedin-oauth2'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'ransack'
+gem 'will_paginate', '~> 3.0'
 
+
+gem "rspec-rails", :group => [:test, :development]
+gem "populator", :group => [:test, :development]
+gem "faker", :group => [:test, :development]
+group :test do
+  gem "factory_girl_rails"
+  gem "capybara"
+  gem "guard-rspec"
+end

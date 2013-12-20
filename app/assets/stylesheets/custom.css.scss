@@ -1,6 +1,9 @@
+$body-bg: #E9E9E9;
+$navbar-default-color: #333;
+$navbar-default-bg: #222930;
+$navbar-default-link-color: #4EB1BA;
+$navbar-default-link-hover-color: #777;
 
-
-$navbar-default-bg: #312312;
 $grayMediumLight: #eaeaea;
 $grayLight: #999;
 $grayLighter: #999;
@@ -8,7 +11,7 @@ $grayDarker: #222;
 $gray: #555;
 
 @import "bootstrap";
-
+@import "bootstrap/theme";
 /* universal */
 
 html {
@@ -40,7 +43,6 @@ textarea {
 }
 
 /* typography */
-
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
@@ -120,3 +122,72 @@ footer {
     }
   }
 }
+/* microposts */
+
+.microposts {
+  list-style: none;
+  margin: 10px 0 0 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+.content {
+  display: block;
+}
+.timestamp {
+  color: $grayLight;
+}
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+/* Errors */
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+}
+
+/* Pagination */
+.apple_pagination {
+  background: #f1f1f1;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+  padding: 1em;
+  cursor: default; }
+  .apple_pagination a, .apple_pagination span {
+    padding: 0.2em 0.3em; }
+  .apple_pagination .disabled {
+    color: #aaaaaa; }
+  .apple_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background-color: #bebebe;
+    display: inline-block;
+    width: 1.4em;
+    height: 1.4em;
+    line-height: 1.5;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; }
+  .apple_pagination a {
+    text-decoration: none;
+    color: black; }
+    .apple_pagination a:hover, .apple_pagination a:focus {
+      text-decoration: underline; }
