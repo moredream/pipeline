@@ -6,6 +6,9 @@ class UsersController < ApplicationController
   def show
       @user = User.find(params[:id])
       @microposts = @user.microposts.paginate(page: params[:page])
+
+      @user.build_profile unless @user.profile #To-Do
+      @profile = @user.profile.bio
   end
 
 end

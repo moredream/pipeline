@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_many :microposts, dependent: :destroy
+  has_one :profile
+  accepts_nested_attributes_for :profile
+  #delegate :bio, to: :profile
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
@@ -15,6 +18,7 @@ class User < ActiveRecord::Base
       user.email =  auth.info.email || "#{auth.uid}@notdefined.com"
       user.username = auth.info.nickname || auth.info.name
       user.image = auth.info.image
+      user.build_profile
     end
   end
 
@@ -45,4 +49,6 @@ class User < ActiveRecord::Base
     # This is preliminary. See "Following users" for the full implementation.
     Micropost.where("user_id = ?", id)
   end
+
+
 end

@@ -5,6 +5,7 @@
       <h1>
         <%= image_tag @user.image, alt: @user.username, class: "profile" %>
         <%= @user.username %>
+
       </h1>
     </section>
   </aside>
@@ -19,4 +20,8 @@
       </div>
     <% end %>
   </div>
+</div>
+Profile
+<div class="row">
+  <%= @user.profile.bio %>
 </div>
