@@ -16,7 +16,7 @@ module ApplicationHelper
     if object.present?
       image_tag object , :class=>'media-object'
     else
-      image_tag 'placeholder-64.png'
+      image_tag 'placeholder-64.png' , :class=>'pull-left'
     end
   end
 

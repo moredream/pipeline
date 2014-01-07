@@ -1,14 +1,17 @@
 
+<p><h2>Bio</h2></p>
 <% unless @user.profile.nil? %>
 <% if @user.profile.bio.present? %>
   <div class="row">
     <div class="col-xs-12 col-md-12">
-      <div class="thumbnail">
+      <div class="">
         <p><%= @user.profile.bio %></p>
       </div>
     </div>
   </div>
 <% end %>
+
+<p><h2>Avaiable to Connection</h2></p>
 <div class="row">
     <div class="col-xs-6 col-md-3">
       <% if @user.profile.google.present? %>
