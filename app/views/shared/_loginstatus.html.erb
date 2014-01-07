@@ -1,4 +1,6 @@
 <%= profile_image(current_user) %>
-<%= link_to "view my profile", current_user %>
+
+<%= link_to "view my profile", profile_path(current_user) %>
+
 <%= pluralize(current_user.microposts.count, "micropost") %>
 

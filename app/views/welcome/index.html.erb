@@ -19,16 +19,10 @@
       This is the home page
     </h2>
 
-    <%= link_to "Sign up now!", new_user_registration_path,
-                                class: "btn btn-large btn-primary" %>
-
-    <h2>
-                                   or Sign with
-    <%= link_to image_tag("twitter.png", :border => 0) ,user_omniauth_authorize_path(:twitter)%> |
+    <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-large btn-primary" %>  or Sign with
     <%= link_to image_tag("facebook.png", :border => 0) , user_omniauth_authorize_path(:facebook) %> |
-    <%= link_to image_tag("google.png", :border => 0) , user_omniauth_authorize_path(:google_oauth2) %> |
-    <%= link_to image_tag("linkedin.png", :border => 0) , user_omniauth_authorize_path(:linkedin) %>
-  </h2>
+    <%= link_to image_tag("google.png", :border => 0) , user_omniauth_authorize_path(:google_oauth2) %>
+
   </div>
 
   <% end %>

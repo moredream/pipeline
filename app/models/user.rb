@@ -5,8 +5,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
+  validates :slug, uniqueness: true, presence: true
+  before_validation :generate_slug
+
   has_many :microposts, dependent: :destroy
-  has_one :profile
+  has_one :profile, inverse_of: :user
   accepts_nested_attributes_for :profile
   #delegate :bio, to: :profile
 
@@ -18,7 +21,6 @@ class User < ActiveRecord::Base
       user.email =  auth.info.email || "#{auth.uid}@notdefined.com"
       user.username = auth.info.nickname || auth.info.name
       user.image = auth.info.image
-      user.build_profile
     end
   end
 
@@ -46,9 +48,15 @@ class User < ActiveRecord::Base
   end
 
   def feed
-    # This is preliminary. See "Following users" for the full implementation.
     Micropost.where("user_id = ?", id)
   end
 
+  # def to_param
+  #   slug
+  # end
+
+  def generate_slug
+    self.slug ||= username.parameterize
+  end
 
 end

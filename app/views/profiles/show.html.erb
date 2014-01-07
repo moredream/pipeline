@@ -1,0 +1,21 @@
+
+
+<% if current_user?(@user) %>
+  <%= render 'shared/link_to_profile' %>
+<% end %>
+<div class="container">
+
+  <%= render 'name_tag'%>
+  <%= render 'social_profile'%>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-lg-8">
+      <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p></div>
+    <div class="col-xs-6 col-lg-4">
+
+    </div>
+  </div>
+<%= render 'partial_profile'%>
+</div>
+
+
+

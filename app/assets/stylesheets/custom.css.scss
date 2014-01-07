@@ -1,4 +1,6 @@
 $body-bg: #E9E9E9;
+$breadcrumb-bg:$body-bg;
+
 $navbar-default-color: #333;
 $navbar-default-bg: #222930;
 $navbar-default-link-color: #4EB1BA;
@@ -163,6 +165,11 @@ aside {
   @extend .error;
 }
 
+/* breadcrumb */
+.breadcrumb {
+  text-align: right;
+
+}
 /* Pagination */
 .apple_pagination {
   background: #f1f1f1;

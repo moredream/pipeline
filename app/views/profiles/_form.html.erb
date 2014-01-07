@@ -1,0 +1,54 @@
+<%= form_for @profile  , :html => { :class => 'form-horizontal' } do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this episode from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Profile</legend>
+
+      <div class="form-group">
+        <%= f.label :twitter, :class => 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+          <%= f.text_field :twitter, :class => 'form-control', :placeholer=>"Twitter" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :linkedin, :class => 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+          <%= f.text_field :linkedin, :class => 'form-control', :placeholer=>"Linkedin" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :google, :class => 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+          <%= f.text_field :google, :class => 'form-control', :placeholer=>"Google" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :image, :class => 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+          <%= f.text_field :image, :class => 'form-control', :placeholer=>"Google" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :bio, :class => 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+          <%= f.text_area :bio, :class => 'form-control', :placeholer=>"Bio" %>
+        </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= f.submit nil, :class=> "btn btn-default" %>
+        <%= link_to 'Cancel', profile_path(@profile.user), :class => "btn btn-default" %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>

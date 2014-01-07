@@ -9,8 +9,23 @@ module ApplicationHelper
   end
 
   def profile_image(object)
-    image_tag object.image, :class => 'img-thumbnail'
+    image_tag avatar_url(object), :class => 'thumbnail'
   end
 
+  def place_image(object)
+    if object.present?
+      image_tag object , :class=>'media-object'
+    else
+      image_tag 'placeholder-64.png'
+    end
+  end
 
+  def avatar_url(user)
+    if user.image.present?
+      user.image
+    else
+      default_url ="guest-128.png"
+
+    end
+  end
 end

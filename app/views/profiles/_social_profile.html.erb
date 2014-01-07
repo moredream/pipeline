@@ -1,0 +1,41 @@
+
+<% unless @user.profile.nil? %>
+<% if @user.profile.bio.present? %>
+  <div class="row">
+    <div class="col-xs-12 col-md-12">
+      <div class="thumbnail">
+        <p><%= @user.profile.bio %></p>
+      </div>
+    </div>
+  </div>
+<% end %>
+<div class="row">
+    <div class="col-xs-6 col-md-3">
+      <% if @user.profile.google.present? %>
+      <%= link_to place_image('google-64.png') , @user.profile.google , class: "thumbnail" %>
+      <% end %>
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <% if @user.profile.linkedin.present? %>
+      <%= link_to place_image('linkedin-64.png'), @user.profile.linkedin, class: "thumbnail" %>
+      <% end %>
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <% if @user.profile.twitter.present? %>
+      <%= link_to place_image('twitter-64.png'), @user.profile.twitter, class: "thumbnail" %>
+      <% end %>
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <% if @user.profile.mobile.present? %>
+      <%= link_to place_image('mobile-64.png'), @user.profile.mobile , class: "thumbnail" %>
+      <% end %>
+    </div>
+</div>
+
+<% if @user.profile.image.present? %>
+<div class="row">
+  <%= @user.profile.image %>
+</div>
+<% end %>
+
+<% end %>

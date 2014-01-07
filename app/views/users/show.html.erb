@@ -1,4 +1,8 @@
-<% provide(:title, @user.username) %>
+
+
+
+<%= render 'shared/link_to_profile' if current_user?(@user) %>
+
 <div class="row">
   <aside class="col-xs-6 col-md-4">
       <section>
@@ -21,7 +25,4 @@
     <% end %>
   </div>
 </div>
-Profile
-<div class="row">
-  <%= @user.profile.bio %>
-</div>
+<%= render 'profile/partial_profile'%>

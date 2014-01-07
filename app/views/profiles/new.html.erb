@@ -1,0 +1,7 @@
+<h2>Basic Info</h2>
+<div class="row">
+    <p><%= @user.username %> </p>
+    <p><%= @user.email %></p>
+  <%= image_tag @user.image, alt: @user.username, class: "profile" %>
+</div>
+<%= render 'form' %>
