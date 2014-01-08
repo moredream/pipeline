@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
 
     unless current_user.profile.nil?
-      flash[:notice] = "Please complete your profile at User Controller"
-      new_profile_path
+      flash[:notice] = "Welcome"
+      root_path
     else
       flash[:alert] = "Please complete your profile"
       new_profile_path

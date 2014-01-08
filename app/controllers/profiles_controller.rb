@@ -31,10 +31,14 @@ class ProfilesController < ApplicationController
   def update
   #  @user = User.find(params[:id])
     @profile  = Profile.find(params[:id])
+    respond_to do |format|
     if @profile.update(profile_params)
-      redirect_to @profile, notice: "Thank you for your profile!"
-    else
-      render "new"
+        format.html { redirect_to profile_path(@profile.user), notice: 'Program was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @profile.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -49,6 +53,6 @@ private
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def profile_params
-    params.require(:profile).permit(:bio,:twitter,:linkedin,:google,:image)
+    params.require(:profile).permit(:bio,:twitter,:linkedin,:google,:image,:mobile)
   end
 end
