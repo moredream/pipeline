@@ -32,7 +32,7 @@ class ProfilesController < ApplicationController
   #  @user = User.find(params[:id])
     @profile  = Profile.find(params[:id])
     if @profile.update(profile_params)
-      redirect_to @profile.user, notice: "Thank you for your profile!"
+      redirect_to @profile, notice: "Thank you for your profile!"
     else
       render "new"
     end

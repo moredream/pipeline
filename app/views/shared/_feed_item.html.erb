@@ -1,5 +1,5 @@
 <li id="<%= feed_item.id %>">
-  <%= link_to profile_image(feed_item.user)  , feed_item.user %>
+  <%= link_to image_tag(avatar_url(feed_item.user), :class => 'thumbnail')  , feed_item.user %>
 
   <span class="user">
     <%= link_to feed_item.user.username, feed_item.user %>

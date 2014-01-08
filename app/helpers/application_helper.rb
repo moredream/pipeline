@@ -8,15 +8,11 @@ module ApplicationHelper
     end
   end
 
-  def profile_image(object)
-    image_tag avatar_url(object), :class => 'thumbnail'
-  end
-
   def place_image(object)
     if object.present?
-      image_tag object , :class=>'media-object'
+       object
     else
-      image_tag 'placeholder-64.png' , :class=>'pull-left'
+       'placeholder-64.png'
     end
   end
 

@@ -1,19 +1,6 @@
 <%= form_for @profile  , :html => { :class => 'form-horizontal' } do |f| %>
-  <% if @profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this episode from being saved:</h2>
-
-      <ul>
-      <% @profile.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+  <%= render 'shared/error_messages', object: f.object %>
   <fieldset>
-    <legend><%= controller.action_name.capitalize %> Profile</legend>
-
       <div class="form-group">
         <%= f.label :twitter, :class => 'col-sm-2 control-label' %>
         <div class="col-sm-10">
@@ -30,6 +17,12 @@
         <%= f.label :google, :class => 'col-sm-2 control-label' %>
         <div class="col-sm-10">
           <%= f.text_field :google, :class => 'form-control', :placeholer=>"Google" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :mobile, :class => 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+          <%= f.text_field :mobile, :class => 'form-control', :placeholer=>"Contact" %>
         </div>
       </div>
       <div class="form-group">
