@@ -29,6 +29,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @photos = @article.photos
 
   end
 
@@ -59,6 +60,6 @@ private
   end
 
   def article_params
-    params.require(:article).permit(:title, :content, :image, :location, :tag_list)
+    params.require(:article).permit(:title, :content, :image, :location, :date, :tag_list)
   end
 end
