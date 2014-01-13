@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
   before_validation :generate_slug
 
   has_many :microposts, dependent: :destroy
+
+  has_many :articles, dependent: :destroy
+
   has_one :profile, inverse_of: :user
   accepts_nested_attributes_for :profile
   #delegate :bio, to: :profile

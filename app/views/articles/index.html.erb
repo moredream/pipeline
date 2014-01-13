@@ -1,0 +1,36 @@
+
+<div  id="article" class="row">
+<% @articles.each do |article| %>
+  <div class="col-xs-12  col-sm-4 col-md-4">
+      <div class="thumbnail">
+
+        <div class="media">
+          <h4 class="media-heading"><%= link_to article.title, article %></h4>
+          <div class="media-body">
+            <%= link_to image_tag(article.image.url(:mobile), :class=> 'media-object') , article %>
+          </div>
+        </div>
+        <div class="media">
+          <div class="media-body">
+              <%= tag_map(article.tags)  %>
+          </div>
+        </div>
+      </div>
+  </div>
+
+<% end %>
+</div>
+
+<%= link_to 'New article', new_article_path ,:class => 'btn btn-default' %>
+
+
+<div class="row">
+  <div id="tag_cloud" >
+    <%= link_to 'All', articles_path, class: "m" %>
+
+    <% tag_cloud Article.tag_counts, %w[m m m] do |tag, css_class| %>
+    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+    <% end %>
+  </div>
+</div>
+

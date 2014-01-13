@@ -11,13 +11,19 @@ Pipeline::Application.routes.draw do
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
-  resources :programs
-
   resources :users , only: [:index, :show]
-
-  #resources :users
   resources :profiles
+
+
+  concern :attachable do
+     resources :photos
+  end
+
+  resources :articles, concerns: :attachable
+  resources :programs, concerns: :attachable
+
   resources :microposts ,  only: [:create, :destroy]
+  get 'tags/:tag', to: 'articles#index', as: :tag
 
   get "welcome/index"
 
