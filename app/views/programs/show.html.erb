@@ -9,16 +9,6 @@
   <strong>Content:</strong>
   <%= @program.content %>
 </p>
-<div class="row">
-  <%= render 'photos/photos_list' %>
-</div>
-<div class="row">
-  <div class="col-xs-12  col-sm-12 col-md-12">
 
 <%= link_to 'Edit', edit_program_path(@program) %> |
-<%= link_to "Add a Photo",   [:new , @attachable, :photo] %>  |
 <%= link_to 'Back', programs_path %>
-
-
-  </div>
-</div>

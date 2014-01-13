@@ -51,6 +51,7 @@ gem 'puma'
 
 gem 'bootstrap-sass'
 
+gem "paperclip", "~> 3.0"
 gem 'carrierwave'
 gem 'mini_magick'
 
