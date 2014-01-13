@@ -1,0 +1,15 @@
+<% if @photos.any? %>
+
+  <% for photo in @photos %>
+  <div class="col-xs-4  col-sm-3 col-md-3">
+      <div class="thumbnail">
+        <%= image_tag photo.image_url(:mobile) if photo.image? || photo.image.default_url%>
+        <div class="name"><%= photo.name %></div>
+        <div class="actions">
+          <%= link_to "edit", [:edit , @attachable, photo] %> |
+          <%= link_to "remove", [@attachable, photo], data: { confirm: 'Are you sure' } , :method => :delete %>
+        </div>
+      </div>
+  </div>
+  <% end %>
+<% end %>
