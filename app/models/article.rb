@@ -1,22 +1,15 @@
 class Article < ActiveRecord::Base
   belongs_to :user
   has_many :taggings
-  has_many :photos
+  has_many :photos, as: :attachable
   has_many :tags, through: :taggings
 
-  scope :recents, order("created_at desc")
+  scope :recents, -> {order("created_at desc")}
   scope :trending, lambda { |num = nil| where('created_at > ?', 5.day.ago).order('created_at  desc'). limit(num) }
 
   validates :title, presence: true
   validates :user_id, presence: true
-
-  has_attached_file :image,
-  :styles => {  :thumb => "100x100>",
-  :mobile => "200x200>",
-  :medium => "300x300>"},
-  :default_url => "/images/:style/missing.png"
-  validates :image, :attachment_presence => false
-  validates_attachment :image, content_type: {  :content_type => ["image/jpg",  "image/png" ]}
+  mount_uploader :image, ImageUploader
 
   def self.tagged_with(name)
     Tag.find_by_name!(name).articles

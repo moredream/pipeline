@@ -29,7 +29,8 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @photos = @article.photos
+    @attachable = @article
+    @photos = @attachable.photos
 
   end
 
@@ -60,6 +61,6 @@ private
   end
 
   def article_params
-    params.require(:article).permit(:title, :content, :image, :location, :date, :tag_list)
+    params.require(:article).permit(:title, :content, :image, :remote_image_url,:location, :date, :tag_list)
   end
 end
