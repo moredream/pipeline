@@ -14,11 +14,14 @@ Pipeline::Application.routes.draw do
   resources :users , only: [:index, :show]
   resources :profiles
 
-  resources :articles do
-    resources :photos
+
+  concern :attachable do
+     resources :photos
   end
 
-  resources :programs
+  resources :articles, concerns: :attachable
+  resources :programs, concerns: :attachable
+
   resources :microposts ,  only: [:create, :destroy]
   get 'tags/:tag', to: 'articles#index', as: :tag
 
