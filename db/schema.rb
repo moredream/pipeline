@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140110090221) do
+ActiveRecord::Schema.define(version: 20140114023615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,18 @@ ActiveRecord::Schema.define(version: 20140110090221) do
 
   add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
 
+  create_table "mentor_profiles", force: true do |t|
+    t.text     "bio"
+    t.string   "twitter"
+    t.string   "linkedin"
+    t.string   "google"
+    t.string   "image"
+    t.string   "mobile"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "microposts", force: true do |t|
     t.string   "content"
     t.integer  "user_id"
@@ -91,15 +103,12 @@ ActiveRecord::Schema.define(version: 20140110090221) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "bio"
-    t.integer  "user_id",    null: false
     t.string   "twitter"
     t.string   "linkedin"
     t.string   "google"
     t.string   "image"
     t.string   "mobile"
   end
-
-  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", unique: true, using: :btree
 
   create_table "programs", force: true do |t|
     t.string   "title"
@@ -142,6 +151,8 @@ ActiveRecord::Schema.define(version: 20140110090221) do
     t.string   "username"
     t.string   "image"
     t.string   "slug"
+    t.integer  "profile_id"
+    t.string   "profile_type"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
