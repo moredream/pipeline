@@ -68,8 +68,8 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-linkedin-oauth2'
 
-gem 'activeadmin', github: 'gregbell/active_admin'
-gem 'ransack'
+# gem 'activeadmin', github: 'gregbell/active_admin'
+# gem 'ransack'
 gem 'will_paginate', '~> 3.0'
 
 
