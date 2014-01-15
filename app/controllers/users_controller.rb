@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def index
 
-    @users = User.mentor
+    @users = User.all
 
 
   end

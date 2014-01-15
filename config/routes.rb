@@ -13,6 +13,7 @@ Pipeline::Application.routes.draw do
 
   resources :users , only: [:index, :show]
   resources :profiles
+  resources :gurus
 
 
   concern :attachable do

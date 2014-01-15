@@ -8,6 +8,11 @@
       <%= link_to_unless_current "Edit My Profile", edit_profile_path(current_user), class: "" %>
       <% end %>
     </li>
+    <% if current_user.guru? %>
+    <li><%= current_user.guru.name %></li>
+    <%else%>
+    <li><%= link_to_unless_current "Join mentoring program", new_guru_path, class: "" %></li>
+    <%end %>
     <li><%= link_to_unless_current "My Account", edit_user_registration_path, class: "" %></li>
   </ol>
 </div>

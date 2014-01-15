@@ -9,17 +9,22 @@ class User < ActiveRecord::Base
   #before_validation :generate_slug
   after_create :generate_membership
 
+  has_many :articles, dependent: :destroy
+  has_many :microposts, dependent: :destroy
+
   belongs_to :membership, polymorphic: true
   delegate :mentee?, :become_member, :grade, to: :membership
 
-  has_many :microposts, dependent: :destroy
-  has_many :articles, dependent: :destroy
   has_one :profile, inverse_of: :user
+  has_one :guru, inverse_of: :user
+
+  delegate :guru?, :become_guru, to: :guru , :allow_nil => true
 
   accepts_nested_attributes_for :profile
 
 
   scope :mentor, -> {where(membership_type: 'Member')}
+
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
@@ -58,6 +63,7 @@ class User < ActiveRecord::Base
   def feed
     Micropost.where("user_id = ?", id)
   end
+
 
   # def to_param
   #   slug
