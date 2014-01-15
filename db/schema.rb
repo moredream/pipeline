@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140114023615) do
+ActiveRecord::Schema.define(version: 20140114075852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,10 +55,6 @@ ActiveRecord::Schema.define(version: 20140114023615) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
     t.string   "location"
     t.string   "date"
     t.string   "link"
@@ -67,14 +63,14 @@ ActiveRecord::Schema.define(version: 20140114023615) do
 
   add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
 
-  create_table "mentor_profiles", force: true do |t|
+  create_table "members", force: true do |t|
     t.text     "bio"
-    t.string   "twitter"
-    t.string   "linkedin"
-    t.string   "google"
-    t.string   "image"
-    t.string   "mobile"
-    t.string   "slug"
+    t.string   "link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mentees", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -107,6 +103,7 @@ ActiveRecord::Schema.define(version: 20140114023615) do
     t.string   "linkedin"
     t.string   "google"
     t.string   "image"
+    t.integer  "user_id"
     t.string   "mobile"
   end
 
@@ -151,11 +148,12 @@ ActiveRecord::Schema.define(version: 20140114023615) do
     t.string   "username"
     t.string   "image"
     t.string   "slug"
-    t.integer  "profile_id"
-    t.string   "profile_type"
+    t.integer  "membership_id"
+    t.string   "membership_type"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["membership_id", "membership_type"], name: "index_users_on_membership_id_and_membership_type", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["slug"], name: "index_users_on_slug", using: :btree
 

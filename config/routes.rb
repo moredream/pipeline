@@ -9,7 +9,7 @@ Pipeline::Application.routes.draw do
 
   # ActiveAdmin.routes(self)
 
-  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks" }
 
   resources :users , only: [:index, :show]
   resources :profiles

@@ -6,15 +6,20 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   validates :slug, uniqueness: true, presence: true
-  before_validation :generate_slug
+  #before_validation :generate_slug
+  after_create :generate_membership
+
+  belongs_to :membership, polymorphic: true
+  delegate :mentee?, :become_member, :grade, to: :membership
 
   has_many :microposts, dependent: :destroy
-
   has_many :articles, dependent: :destroy
-
   has_one :profile, inverse_of: :user
+
   accepts_nested_attributes_for :profile
-  #delegate :bio, to: :profile
+
+
+  scope :mentor, -> {where(membership_type: 'Member')}
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
@@ -57,6 +62,13 @@ class User < ActiveRecord::Base
   # def to_param
   #   slug
   # end
+
+  # delay job - To Do
+  def generate_membership
+    self.build_profile
+    self.membership = Mentee.new
+    self.save!
+  end
 
   def generate_slug
     self.slug ||= username.parameterize
