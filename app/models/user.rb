@@ -5,15 +5,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-  validates :slug, uniqueness: true, presence: true
+  #validates :slug, uniqueness: true, presence: true
   #before_validation :generate_slug
   after_create :generate_membership
 
   has_many :articles, dependent: :destroy
   has_many :microposts, dependent: :destroy
-
-  belongs_to :membership, polymorphic: true
-  delegate :mentee?, :become_member, :grade, to: :membership
 
   has_one :profile, inverse_of: :user
   has_one :guru, inverse_of: :user
@@ -22,8 +19,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :profile
 
-
-  scope :mentor, -> {where(membership_type: 'Member')}
+ # scope :mentor, -> {where(membership_type: 'Member')}
 
 
   def self.from_omniauth(auth)
@@ -72,7 +68,6 @@ class User < ActiveRecord::Base
   # delay job - To Do
   def generate_membership
     self.build_profile
-    self.membership = Mentee.new
     self.save!
   end
 
