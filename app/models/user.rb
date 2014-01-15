@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user.email =  auth.info.email || "#{auth.uid}@notdefined.com"
       user.username = auth.info.nickname || auth.info.name
-      user.image = auth.info.image
+     # user.image = auth.info.image
     end
   end
 

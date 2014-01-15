@@ -1,11 +1,19 @@
-$body-bg: #E9E9E9;
+$body-bg: #f6f6f6;
 $breadcrumb-bg:$body-bg;
+/* nav bar
+$navbar-default-color: #ffffff;
 
-$navbar-default-color: #333;
-$navbar-default-bg: #222930;
-$navbar-default-link-color: #4EB1BA;
-$navbar-default-link-hover-color: #777;
 
+ */
+$navbar-default-bg: #CAC7B4;
+$navbar-default-link-color: #380B12;
+$navbar-default-link-hover-color: #BEC1B8;
+
+$navbar-default-toggle-hover-bg:#BEC1B8;
+$navbar-default-toggle-icon-bar-bg: #380B12;
+$navbar-default-toggle-border-color:#380B12;
+
+$font-family-base: "Helvetica Neue";
 $grayMediumLight: #888;
 
 
@@ -24,7 +32,7 @@ body {
 
 
 .navbar-nav {
-  font-weight: 300;
+  font-weight: 400;
 }
 
 

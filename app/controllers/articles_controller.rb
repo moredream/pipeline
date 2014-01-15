@@ -49,10 +49,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
-    respond_to do |format|
-      format.html { redirect_to articles_url }
-      format.json { head :no_content }
-    end
+    redirect_to articles_url
   end
 
 private
