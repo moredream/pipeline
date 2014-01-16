@@ -1,8 +1,8 @@
-
 class Article < ActiveRecord::Base
   belongs_to :user
   has_many :taggings
   has_many :photos, as: :attachable
+  has_many :comments, as: :commentable
   has_many :tags, through: :taggings
 
   scope :recents, -> {order("created_at desc")}

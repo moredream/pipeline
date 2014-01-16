@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_filter :find_user, only: [:show, :edit]
+  before_action :find_user, only: [:show, :edit]
 
   def new
     @user = current_user

@@ -20,6 +20,7 @@ module ApplicationHelper
   end
 
   def avatar_url(user)
+
     if user.image.present?
       user.image
     else

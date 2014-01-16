@@ -1,5 +1,5 @@
 <%= form_for ([@attachable, @photo])  , :html => { :multipart => true ,:class => 'form-horizontal' } do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>  <fieldset>
+  <%= render 'shared/error_messages', object: f.object %>
     <div class="form-group">
       <%= f.label :name, :class => 'col-sm-2 control-label' %>
       <div class="col-sm-10">

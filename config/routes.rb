@@ -1,5 +1,7 @@
 Pipeline::Application.routes.draw do
 
+  get "comments/index"
+  get "comments/new"
   %w[about privacy terms contact].each do |page|
     get page, controller: "info", action: page
   end
@@ -20,8 +22,12 @@ Pipeline::Application.routes.draw do
      resources :photos
   end
 
-  resources :articles, concerns: :attachable
-  resources :programs, concerns: :attachable
+  concern :commentable do
+     resources :comments
+  end
+
+  resources :articles, concerns: [:attachable , :commentable]
+  resources :programs, concerns: [:attachable , :commentable]
 
   resources :microposts ,  only: [:create, :destroy]
   get 'tags/:tag', to: 'articles#index', as: :tag

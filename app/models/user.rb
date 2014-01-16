@@ -11,12 +11,13 @@ class User < ActiveRecord::Base
 
   has_many :articles, dependent: :destroy
   has_many :microposts, dependent: :destroy
+  has_many :comments
 
   has_one :profile, inverse_of: :user
   has_one :guru, inverse_of: :user
 
   delegate :guru?, :become_guru, to: :guru , :allow_nil => true
-
+  delegate :image,  to: :profile , :allow_nil => true
   accepts_nested_attributes_for :profile
 
  # scope :mentor, -> {where(membership_type: 'Member')}

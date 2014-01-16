@@ -12,7 +12,9 @@ class ProgramsController < ApplicationController
   def show
     @attachable = @program
     @photos = @attachable.photos
-
+    @commentable = @program
+    @comments = @commentable.comments.paginate(page: params[:page])
+    @comment = Comment.new
   end
 
   # GET /programs/new

@@ -31,7 +31,9 @@ class ArticlesController < ApplicationController
   def show
     @attachable = @article
     @photos = @attachable.photos
-
+    @commentable = @article
+    @comments = @commentable.comments.paginate(page: params[:page])
+    @comment = Comment.new
   end
 
   def edit
