@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   delegate :guru?, :become_guru, to: :guru , :allow_nil => true
   delegate :image,  to: :profile , :allow_nil => true
   accepts_nested_attributes_for :profile
-
+  mount_uploader :image, ImageUploader
  # scope :mentor, -> {where(membership_type: 'Member')}
 
 
