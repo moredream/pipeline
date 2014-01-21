@@ -19,8 +19,8 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><%= link_to "Open Programs", programs_path %></li>
-      <li><%= link_to "Labs Search", articles_path %></li>
-      <li><%= link_to "Meet Me", users_path %></li>
+      <li><%= link_to "Labs", articles_path %></li>
+      <li><%= link_to "Mentors", users_path %></li>
 
     <% if user_signed_in? %>
       <li><%= link_to "Profile", profile_path(current_user) %></li>
