@@ -11,7 +11,7 @@ Pipeline::Application.routes.draw do
 
   # ActiveAdmin.routes(self)
 
-  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks" }
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks", registrations:"registrations" }
 
   resources :users , only: [:index, :show]
   resources :profiles
@@ -29,7 +29,6 @@ Pipeline::Application.routes.draw do
   resources :articles, concerns: [:attachable , :commentable]
   resources :programs, concerns: [:attachable , :commentable]
 
-  resources :microposts ,  only: [:create, :destroy]
   get 'tags/:tag', to: 'articles#index', as: :tag
 
   get "welcome/index"

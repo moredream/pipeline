@@ -1,5 +1,7 @@
 <%= render 'shared/link_to_profile' %>
-<%= render 'name_tag'%>
+
+
+<%= render partial: "name_tag", locals: { user: @user } %>
 
 <%= render 'form' %>
 

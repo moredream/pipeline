@@ -7,14 +7,16 @@ class ApplicationController < ActionController::Base
 
   protected
   def after_sign_in_path_for(resource)
+    flash[:notice] = "Welcome"
+    root_path
 
-    unless current_user.profile.nil?
-      flash[:notice] = "Welcome"
-      root_path
-    else
-      flash[:alert] = "Please complete your profile"
-      new_profile_path
-    end
+    # unless current_user.profile.nil?
+    #   flash[:notice] = "Welcome"
+    #   root_path
+    # else
+    #   flash[:alert] = "Please complete your profile"
+    #   new_profile_path
+    # end
   end
 
   # def after_sign_up_path_for(resource)
@@ -28,8 +30,8 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password,
-      :password_confirmation, :remember_me ,:image,:remote_image_url) }
-    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:username, :email, :password, :remember_me, :image,:remote_image_url) }
+      :password_confirmation, :remember_me ) }
+    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:username, :email, :password, :remember_me) }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password ,:image,:remote_image_url) }
   end
 end

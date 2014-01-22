@@ -3,14 +3,15 @@
 <% if current_user?(@user) %>
   <%= render 'shared/link_to_profile' %>
 <% end %>
-<div class="container">
 
-  <%= render 'name_tag'%>
+<% unless current_user.profile.nil? %>
+<div class="container">
+  <%= render partial: "name_tag", locals: { user: @user } %>
   <%= render 'social_profile'%>
 
   <%= render 'partial_profile'%>
 
 </div>
-
+<% end %>
 
 

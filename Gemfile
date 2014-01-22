@@ -71,8 +71,7 @@ gem 'omniauth-linkedin-oauth2'
 
 # gem 'activeadmin', github: 'gregbell/active_admin'
 # gem 'ransack'
-gem 'will_paginate', '~> 3.0'
-
+gem 'kaminari'
 
 gem "rspec-rails", :group => [:test, :development]
 gem "populator", :group => [:test, :development]

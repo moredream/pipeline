@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
 
   def new
     @user = current_user
-    @profile = @user.profile || @user.build_profile
+    @profile = current_user.build_profile
   end
 
   def create
@@ -37,13 +37,14 @@ class ProfilesController < ApplicationController
 
 private
 # # Use callbacks to share common setup or constraints between actions.
+
   def find_user
     @user = User.find(params[:id])
-    @profile  = @user.profile || @user.build_profile
+    @profile = @user.profile
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def profile_params
-    params.require(:profile).permit(:bio,:twitter,:linkedin,:google,:image,:remote_image_url,:mobile)
+    params.require(:profile).permit(:bio,:url, :lab, :twitter,:linkedin,:google,:image,:remote_image_url,:mobile)
   end
 end
