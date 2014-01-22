@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   #validates :slug, uniqueness: true, presence: true
   #before_validation :generate_slug
-  after_create :generate_membership
+
 
   has_many :articles, dependent: :destroy
   has_many :microposts, dependent: :destroy
@@ -18,7 +18,9 @@ class User < ActiveRecord::Base
 
   delegate :guru?, :become_guru, to: :guru , :allow_nil => true
   delegate :image,  to: :profile , :allow_nil => true
+
   accepts_nested_attributes_for :profile
+
   mount_uploader :image, ImageUploader
  # scope :mentor, -> {where(membership_type: 'Member')}
 
@@ -62,14 +64,8 @@ class User < ActiveRecord::Base
   end
 
 
-  # def to_param
-  #   slug
-  # end
-
-  # delay job - To Do
-  def generate_membership
-    self.build_profile
-    self.save!
+  def to_param
+    "#{id}-#{username}".parameterize
   end
 
   def generate_slug
