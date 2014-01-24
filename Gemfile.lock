@@ -36,6 +36,9 @@ GEM
     bootstrap-sass (3.0.3.0)
       sass (~> 3.2)
     builder (3.1.4)
+    bullet (4.7.1)
+      activesupport
+      uniform_notifier (>= 1.4.0)
     callsite (0.0.11)
     capybara (2.2.0)
       mime-types (>= 1.16)
@@ -244,6 +247,7 @@ GEM
     uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    uniform_notifier (1.4.0)
     warden (1.2.3)
       rack (>= 1.0)
     xpath (2.0.0)
@@ -256,6 +260,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  bullet
   capybara
   carrierwave
   coffee-rails (~> 4.0.0)

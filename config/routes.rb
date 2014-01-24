@@ -14,20 +14,17 @@ Pipeline::Application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks", registrations:"registrations" }
 
   resources :users , only: [:index, :show]
-  resources :profiles
+  resources :profiles, :labs
   resources :gurus
 
 
-  concern :attachable do
-     resources :photos
+  concern :sociable do
+    resources :photos
+    resources :comments
   end
 
-  concern :commentable do
-     resources :comments
-  end
-
-  resources :articles, concerns: [:attachable , :commentable]
-  resources :programs, concerns: [:attachable , :commentable]
+  resources :articles, concerns: :sociable
+  resources :programs, concerns: :sociable
 
   get 'tags/:tag', to: 'articles#index', as: :tag
 

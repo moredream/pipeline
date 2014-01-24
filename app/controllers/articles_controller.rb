@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
     if params[:tag]
       @articles = Article.tagged_with(params[:tag])
     else
-      @articles = Article.trending
+      @articles = Article.trending.includes(:tags)
     end
     @article.build_tag if @articles.tag_counts.nil?
 

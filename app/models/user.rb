@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
 
   has_many :articles, dependent: :destroy
-  has_many :microposts, dependent: :destroy
+  has_many :labs, dependent: :destroy
   has_many :comments
 
   has_one :profile, inverse_of: :user

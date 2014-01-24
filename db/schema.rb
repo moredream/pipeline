@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140122074246) do
+ActiveRecord::Schema.define(version: 20140123031045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,22 @@ ActiveRecord::Schema.define(version: 20140122074246) do
   end
 
   add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categorizations", force: true do |t|
+    t.integer  "lab_id"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categorizations", ["category_id"], name: "index_categorizations_on_category_id", using: :btree
+  add_index "categorizations", ["lab_id"], name: "index_categorizations_on_lab_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.text     "content"
@@ -53,6 +69,18 @@ ActiveRecord::Schema.define(version: 20140122074246) do
   end
 
   add_index "gurus", ["user_id"], name: "index_gurus_on_user_id", using: :btree
+
+  create_table "labs", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.string   "head"
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "labs", ["user_id"], name: "index_labs_on_user_id", using: :btree
 
   create_table "photos", force: true do |t|
     t.string   "name"

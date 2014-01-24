@@ -1,9 +1,9 @@
 class Article < ActiveRecord::Base
   belongs_to :user
-  has_many :taggings
   has_many :photos, as: :attachable
   has_many :comments, as: :commentable
   has_many :tags, through: :taggings
+  has_many :taggings
 
   scope :recents, -> {order("created_at desc")}
   scope :trending, lambda { |num = nil| where('created_at > ?', 5.day.ago).order('created_at  desc'). limit(num) }
