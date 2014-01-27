@@ -8,15 +8,12 @@
 Category.delete_all
 
 category_list = [
-   "US",
-   "Canada" ,
+   "US/Canada" ,
+   "Singapore",
    "Europe" ,
    "China",
    "Japan",
-   "Singapore",
-   "Australia / New Zealand",
-   "Philippine" ,
-   "Asia",
+   "Australia/New Zealand",
    "Others"
 ]
 
