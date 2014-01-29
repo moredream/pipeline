@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   has_one :guru, inverse_of: :user
 
   delegate :guru?, :become_guru, to: :guru , :allow_nil => true
-  delegate :image,  to: :profile , :allow_nil => true
+  #delegate :image,  to: :profile , :allow_nil => true
 
   accepts_nested_attributes_for :profile
 

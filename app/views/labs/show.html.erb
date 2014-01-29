@@ -6,16 +6,6 @@
   </div>
   <div class="row">
     <div class="col-xs-12  col-sm-12 col-md-12">
-        <p><h3><%= @lab.url %></h3></p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12  col-sm-12 col-md-12">
-        <p><h3><%= @lab.head %></h3></p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12  col-sm-12 col-md-12">
         <ul>
           <% @lab.categories.each do |category| %>
             <li><%= category.name %></li>
@@ -26,6 +16,16 @@
   <div class="row">
     <div class="col-xs-12  col-sm-12 col-md-12">
       <p> <%= @lab.content %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12  col-sm-12 col-md-12">
+        <p><h3><%= @lab.url %></h3></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12  col-sm-12 col-md-12">
+        <p><h3><%= @lab.head %></h3></p>
     </div>
   </div>
 

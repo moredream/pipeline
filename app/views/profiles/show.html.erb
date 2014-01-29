@@ -4,14 +4,29 @@
   <%= render 'shared/link_to_profile' %>
 <% end %>
 
-<% unless current_user.profile.nil? %>
-<div class="container">
-  <%= render partial: "name_tag", locals: { user: @user } %>
-  <%= render 'social_profile'%>
 
-  <%= render 'partial_profile'%>
+
+<% unless current_user.profile.nil? %>
+
+<div class="row">
+  <aside class="col-xs-6 col-md-4">
+      <section>
+
+        <%= image_tag( current_user.profile.image.url(:mobile), :class=>'pull-left thumbnail')  %>
+
+      </section>
+  </aside>
+  <div class="col-xs-12 col-sm-6 col-md-8">
+        <%= link_to 'Change Image', profile_path(@profile), :class => "btn btn-default" %>
+  </div>
 
 </div>
+
+  <%= render partial: "name_tag", locals: { user: @user } %>
+
+
+  <%= render 'social_profile'%>
+
 <% end %>
 
 

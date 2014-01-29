@@ -32,7 +32,7 @@ class ArticlesController < ApplicationController
     @attachable = @article
     @photos = @attachable.photos
     @commentable = @article
-    @comments = @commentable.comments.page(params[:page]).per(2)
+    @comments = @commentable.comments.page(params[:page]).per(10)
     @comment = Comment.new
   end
 

@@ -45,6 +45,8 @@ end
 # gem 'debugger', group: [:development, :test]
 
 # Addon By Me
+gem 'jquery-fileupload-rails'
+
 gem 'rails_12factor', group: :production
 
 gem 'puma'
@@ -60,7 +62,6 @@ group :development do
   gem 'meta_request'
   gem 'rack-mini-profiler'
   gem 'bullet'
-
 end
 
 gem 'figaro'
@@ -78,6 +79,7 @@ gem 'kaminari'
 gem "rspec-rails", :group => [:test, :development]
 gem "populator", :group => [:test, :development]
 gem "faker", :group => [:test, :development]
+
 group :test do
   gem "factory_girl_rails"
   gem "capybara"

@@ -1,22 +1,16 @@
 
-<p>
-  <strong>Title:</strong>
-  <%= @program.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @program.content %>
-</p>
 <div class="row">
-  <%= link_to 'Join', new_program_path ,:class => 'btn btn-default' %>
-  <%= link_to 'Like', new_program_path ,:class => 'btn btn-default' %>
+  <%= @program.title %>
 </div>
-
+<div class="row">
+  <%= @program.content %>
+</div>
 <div class="row">
   <%= render 'photos/photos_list' %>
 </div>
-
+<div class="row">
+  <%= render 'photos/form_inline' %>
+</div>
 <div class="row">
 <%= render "comments/comments" %>
 </div>
@@ -32,3 +26,5 @@
     <%= link_to 'Back', programs_path ,:class => 'btn btn-default'%>
   </div>
 </div>
+
+

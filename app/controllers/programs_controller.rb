@@ -13,7 +13,7 @@ class ProgramsController < ApplicationController
     @attachable = @program
     @photos = @attachable.photos
     @commentable = @program
-    @comments = @commentable.comments.page(params[:page]).per(2)
+    @comments = @commentable.comments.page(params[:page]).per(10)
     @comment = Comment.new
   end
 
