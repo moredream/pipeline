@@ -1,27 +1,16 @@
-<%= form_for @profile  , :html => { :class => 'form-horizontal' } do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <fieldset>
-
-    <div class="form-group">
-      <%= f.label :image, :class => 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
-      <%= f.file_field :image,  :placeholder=>"jpg, gif, png only"%>
-      <%= f.hidden_field :image_cache %>
-
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :remote_image_url,  "or image URL", :class => 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
-      <%= f.text_field :remote_image_url, :class => 'form-control', :placeholder=>"http:// or https:// ~~~" %>
-      </div>
-    </div>
+<%= form_for @profile  , :html => { :id=>'avata_editor', :class => 'form-horizontal' } , :remote=> true do |f| %>
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
-        <%= f.submit nil, :class=> "btn btn-default" %>
-        <%= link_to 'Cancel', profile_path(@profile.user), :class => "btn btn-default" %>
+       <%= f.file_field :image, :class=>"", :placeholder=>"jpg, gif, png only"%>
       </div>
     </div>
-  </fieldset>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+          <%= f.submit 'Change Image', :class=> "btn btn-default" %>
+      </div>
+    </div>
+
+
+
 <% end %>

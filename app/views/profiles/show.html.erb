@@ -11,13 +11,14 @@
 <div class="row">
   <aside class="col-xs-6 col-md-4">
       <section>
-
-        <%= image_tag( current_user.profile.image.url(:mobile), :class=>'pull-left thumbnail')  %>
+        <div class="" id="avata">
+          <%= render 'avata', profile: current_user.profile, version: :mobile %>
+        </div>
 
       </section>
   </aside>
   <div class="col-xs-12 col-sm-6 col-md-8">
-        <%= link_to 'Change Image', profile_path(@profile), :class => "btn btn-default" %>
+      <%=render 'form_avata'%>
   </div>
 
 </div>

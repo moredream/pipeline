@@ -45,7 +45,6 @@ end
 # gem 'debugger', group: [:development, :test]
 
 # Addon By Me
-gem 'jquery-fileupload-rails'
 
 gem 'rails_12factor', group: :production
 
@@ -55,6 +54,7 @@ gem 'bootstrap-sass'
 
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'remotipart', '~> 1.2'
 
 group :development do
   gem 'better_errors'

@@ -28,7 +28,14 @@ class ProfilesController < ApplicationController
     @profile  = Profile.find(params[:id])
 
     if @profile.update(profile_params)
-      redirect_to profile_path(@profile.user), notice: 'Program was successfully updated.'
+      if remotipart_submitted?
+        respond_to do |format|
+          format.html {redirect_to profile_path(@profile.user), notice: 'Program was successfully updated.'}
+          format.js
+        end
+      else
+        redirect_to profile_path(@profile.user), notice: 'Program was successfully updated.'
+      end
     else
       render action: 'edit'
     end
