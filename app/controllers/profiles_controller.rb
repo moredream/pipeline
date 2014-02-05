@@ -28,14 +28,21 @@ class ProfilesController < ApplicationController
     @profile  = Profile.find(params[:id])
 
     if @profile.update(profile_params)
-      if remotipart_submitted?
-        respond_to do |format|
-          format.html {redirect_to profile_path(@profile.user), notice: 'Program was successfully updated.'}
-          format.js
-        end
+
+      if params[:profile][:image].present?
+        render :crop
       else
-        redirect_to profile_path(@profile.user), notice: 'Program was successfully updated.'
+        redirect_to profile_path(@profile.user), notice: 'Profile was successfully updated.'
       end
+
+      # if remotipart_submitted?
+      #   respond_to do |format|
+      #     format.html {redirect_to profile_path(@profile.user), notice: 'Profile was successfully updated.'}
+      #     format.js
+      #   end
+      # else
+      #   redirect_to profile_path(@profile.user), notice: 'Profile was successfully updated.'
+      # end
     else
       render action: 'edit'
     end
@@ -52,6 +59,6 @@ private
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def profile_params
-    params.require(:profile).permit(:bio,:url, :lab, :twitter,:linkedin,:google,:image,:remote_image_url,:mobile)
+    params.require(:profile).permit(:bio,:url, :lab, :twitter,:linkedin,:google,:image,:remote_image_url,:mobile, :crop_x,:crop_y,:crop_w,:crop_h)
   end
 end

@@ -5,18 +5,15 @@
       <section>
       <h1>
         <%= image_tag @user.image, alt: @user.username, class: "profile" %>
+
+        <%= image_tag @user.image_url(:thumb), alt: @user.username, class: "profile" %>
+
         <%= @user.username %>
 
       </h1>
     </section>
   </aside>
   <div class="col-xs-12 col-sm-6 col-md-8">
-
+      <%= link_to @user.username, edit_user_path(@user) %>
   </div>
 </div>
-
-Apply Connection!
-Apply Connection!
-Apply Connection!
-Apply Connection!
-

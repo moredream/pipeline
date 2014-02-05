@@ -8,12 +8,11 @@ class User < ActiveRecord::Base
   #validates :slug, uniqueness: true, presence: true
   #before_validation :generate_slug
 
-
   has_many :articles, dependent: :destroy
   has_many :labs, dependent: :destroy
   has_many :comments
 
-  has_one :profile, inverse_of: :user
+  has_one :profile, inverse_of: :user, dependent: :destroy
   has_one :guru, inverse_of: :user
 
   delegate :guru?, :become_guru, to: :guru , :allow_nil => true
@@ -22,9 +21,14 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile
 
   mount_uploader :image, ImageUploader
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  after_update :crop_avatar
 
  # scope :mentor, -> {where(membership_type: 'Member')}
 
+  def crop_avatar
+    self.image.recreate_versions! if crop_x.present?
+  end
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
@@ -33,7 +37,7 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user.email =  auth.info.email || "#{auth.uid}@notdefined.com"
       user.username = auth.info.nickname || auth.info.name
-     # user.image = auth.info.image
+      user.image = auth.info.image
     end
   end
 
@@ -59,11 +63,6 @@ class User < ActiveRecord::Base
       super
     end
   end
-
-  def feed
-    Micropost.where("user_id = ?", id)
-  end
-
 
   def to_param
     "#{id}-#{username}".parameterize

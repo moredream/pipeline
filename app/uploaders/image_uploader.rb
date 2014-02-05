@@ -30,19 +30,20 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
-  process :resize_to_fit => [800, 800]
+  process :resize_to_limit => [600, 600]
 
   # Create different versions of your uploaded files:
   version :thumb do
+    process :crop
     process :resize_to_fill => [64, 64]
   end
 
   version :mobile do
-    process :resize_to_fill => [200, 200]
+    process :resize_to_fill => [400, 400]
   end
 
-    version :large do
-    process :resize_to_fit => [400, 400]
+  version :large do
+    process :resize_to_limit => [600, 600]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -53,17 +54,17 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def crop
     if model.crop_x.present?
-      resize_to_limit(800, 800)
+      #resize_to_limit(600, 600)
       manipulate! do |img|
-        x = model.crop_x.to_i
-        y = model.crop_y.to_i
-        w = model.crop_w.to_i
-        h = model.crop_h.to_i
-        img.crop!(x, y, w, h)
+        x = model.crop_x
+        y = model.crop_y
+        w = model.crop_w
+        h = model.crop_h
+        img.crop "#{w}x#{h}+#{x}+#{y}"
+        img
       end
     end
   end
-
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # def filename
