@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   #validates :slug, uniqueness: true, presence: true
   #before_validation :generate_slug
+  validates :username, presence: true
 
   has_many :articles, dependent: :destroy
   has_many :labs, dependent: :destroy

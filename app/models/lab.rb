@@ -3,6 +3,7 @@ class Lab < ActiveRecord::Base
   has_many :categorizations
   has_many :categories, through: :categorizations
   has_many :photos, as: :attachable
+  validates :name, presence: true
 
   accepts_nested_attributes_for :categorizations, allow_destroy: true
 

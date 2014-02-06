@@ -1,5 +1,5 @@
 
-<%= form_for  @user , :html => { :multipart=>true, :class=>'form-horizontal'} do |f| %>
+<%= form_for  @user , :html => { :id=> "user_editor", :multipart=>true, :class=>'form-horizontal'} do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
     <fieldset>
     <legend>Display</legend>

@@ -71,7 +71,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-linkedin-oauth2'
-
+gem 'rails4_client_side_validations'
 # gem 'activeadmin', github: 'gregbell/active_admin'
 # gem 'ransack'
 gem 'kaminari'
