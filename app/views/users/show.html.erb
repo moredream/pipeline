@@ -1,19 +1,56 @@
 
+<%= render 'shared/link_to_profile' %>
 
-<div class="row">
-  <aside class="col-xs-6 col-md-4">
-      <section>
-      <h1>
-        <%= image_tag @user.image, alt: @user.username, class: "profile" %>
-
-        <%= image_tag @user.image_url(:thumb), alt: @user.username, class: "profile" %>
-
-        <%= @user.username %>
-
-      </h1>
-    </section>
-  </aside>
-  <div class="col-xs-12 col-sm-6 col-md-8">
-      <%= link_to @user.username, edit_user_path(@user) %>
+<div class="row docs-container">
+  <div class="col-xs-3 col-sm-3 col-md-3">
+   <%= image_tag( @user.image.url(:thumb), :class=>'img-rounded') %>
+  </div>
+  <div class="col-xs-9 col-sm-9 col-md-9">
+   <h4 class="media-heading"><%= @user.username %></h4>
   </div>
 </div>
+
+<h3 id="bio" class="page-header">Biography</h3>
+<div class="row docs-container">
+<%=@user.profile.bio%>
+</div>
+
+<h3 id="lab" class="page-header">Lab</h3>
+<div class="row docs-container">
+<%=@user.profile.lab%>
+</div>
+
+<h3 id="contacts" class="page-header">Contacts</h3>
+<div class="row">
+  <div class="highlight">
+    <ul class="media-list">
+      <li class="media">
+        <%= image_tag 'profile-home.png' , :size=>'32x32' , :class=>"pull-left"%>
+        <div class="media-body">
+            <%= @user.profile.url %>
+        </div>
+      </li>
+      <li class="media">
+        <%= image_tag 'profile-twitter.png' , :size=>'32x32' , :class=>"pull-left"%>
+        <div class="media-body">
+            <%= link_to "http://twitter.com/#{@user.profile.twitter}" %>
+        </div>
+      </li>
+      <li class="media">
+        <%= image_tag 'profile-linkedin.png' , :size=>'32x32' , :class=>"pull-left"%>
+        <div class="media-body">
+            <%= link_to "http://twitter.com/#{@user.profile.linkedin}" %>
+        </div>
+      </li>
+      <li class="media">
+        <%= image_tag 'profile-google.png' , :size=>'32x32' , :class=>"pull-left"%>
+        <div class="media-body">
+          <%=@user.profile.google %>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+

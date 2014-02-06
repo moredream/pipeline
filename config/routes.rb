@@ -11,10 +11,11 @@ Pipeline::Application.routes.draw do
 
   # ActiveAdmin.routes(self)
 
-  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks", registrations:"registrations" }
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   resources :users , only: [:index, :show, :edit,:update]
-  resources :profiles, :labs
+  #resources :profiles , only: [:show, :edit,:update]
+  resources :labs
   resources :gurus
 
   concern :sociable do

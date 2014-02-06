@@ -1,33 +1,26 @@
 
 
-<% if current_user?(@user) %>
-  <%= render 'shared/link_to_profile' %>
-<% end %>
 
+<%= render 'shared/link_to_profile' %>
 
+<aside class="col-xs-6 col-md-4">
+    <section>
+      <div class="" id="avata">
+        <%= render 'shared/avata', user: current_user, version: :thumb %>
+      </div>
 
-<% unless current_user.profile.nil? %>
-
-<div class="row">
-  <aside class="col-xs-6 col-md-4">
-      <section>
-        <div class="" id="avata">
-          <%= render 'avata', profile: current_user.profile, version: :thumb %>
-        </div>
-
-      </section>
-  </aside>
-  <div class="col-xs-12 col-sm-6 col-md-8">
-      <%=render 'form_avata'%>
-  </div>
+    </section>
+</aside>
+<div class="col-xs-12 col-sm-6 col-md-8">
 
 </div>
 
-  <%= render partial: "name_tag", locals: { user: @user } %>
+
+<%= render partial: "name_tag", locals: { user: @user } %>
 
 
-  <%= render 'social_profile'%>
+<%= render 'social_profile'%>
 
-<% end %>
+
 
 

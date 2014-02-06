@@ -1,8 +1,0 @@
-<% if remotipart_submitted? %>
-
-  $('#avata').html('<%= j render 'avata', profile:  @profile, version: :mobile%>');
-
-  $('#profile_image').val('');
-<% else %>
-  alert('submitted via native jquery-ujs');
-<% end %>

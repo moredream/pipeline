@@ -1,21 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :find_user, only: [:show, :edit]
 
-  def new
-    @user = current_user
-    @profile = current_user.build_profile
-  end
-
-  def create
-    @profile = current_user.build_profile(profile_params)
-
-    if @profile.save!
-      redirect_to  current_user , notice: "Thank you for your profile!"
-    else
-      render "new"
-    end
-  end
-
   def show
 
   end
@@ -29,12 +14,6 @@ class ProfilesController < ApplicationController
 
     if @profile.update(profile_params)
 
-      if params[:profile][:image].present?
-        render :crop
-      else
-        redirect_to profile_path(@profile.user), notice: 'Profile was successfully updated.'
-      end
-
       # if remotipart_submitted?
       #   respond_to do |format|
       #     format.html {redirect_to profile_path(@profile.user), notice: 'Profile was successfully updated.'}
@@ -43,6 +22,7 @@ class ProfilesController < ApplicationController
       # else
       #   redirect_to profile_path(@profile.user), notice: 'Profile was successfully updated.'
       # end
+      redirect_to profile_path(@profile.user), notice: 'Profile was successfully updated.'
     else
       render action: 'edit'
     end
@@ -54,11 +34,11 @@ private
 
   def find_user
     @user = User.find(params[:id])
-    @profile = @user.profile
+    @profile = @user.profile || @user.build_profile
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def profile_params
-    params.require(:profile).permit(:bio,:url, :lab, :twitter,:linkedin,:google,:image,:remote_image_url,:mobile, :crop_x,:crop_y,:crop_w,:crop_h)
+    params.require(:profile).permit(:bio,:url, :lab, :twitter,:linkedin,:google,:mobile)
   end
 end

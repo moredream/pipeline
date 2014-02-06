@@ -35,22 +35,9 @@ body {
 
 }
 
-.upload {
-  border-top: solid 1px #CCC;
-  width: 400px;
-  padding-top: 10px;
-  margin-top: 10px;
-
-  .progress {
-    margin-top: 8px;
-    border: solid 1px #555;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
-    .bar {
-      height: 10px;
-      background: #3EC144;
-    }
-  }
+.input-group-addon {
+    min-width:200px;// if you want width please write here //
+    text-align:left;
 }
 
 .navbar-nav {
@@ -60,6 +47,24 @@ body {
 .fill {
     height: 100%;
     min-height: 100%;
+}
+
+.highlight {
+    background-color: #F7F7F9;
+    border: 1px solid #E1E1E8;
+    border-radius: 4px;
+    margin-bottom: 14px;
+    padding: 9px 14px;
+}
+
+.docs-container {
+    background-color: #FFFFFF;
+    margin-bottom: 14px;
+    padding: 9px 14px;
+}
+
+.bs-docs-section {
+    margin-bottom: 60px;
 }
 
 /* footer */
