@@ -11,10 +11,10 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.validate
 //= require jquery_ujs
 //= require jquery.remotipart
 //= require jquery.Jcrop
+//= require jquery.validate
 //= require turbolinks
 //= require_tree .
 //= require bootstrap
