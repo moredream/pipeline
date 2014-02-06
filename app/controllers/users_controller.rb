@@ -7,12 +7,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user.build_profile if @user.profile.nil?
+
   end
 
   def edit
-
-  #  @profile = @user.profile || @user.build_profile
     @user.build_profile if @user.profile.nil?
   end
 

@@ -2,7 +2,7 @@ Pipeline::Application.routes.draw do
 
   get "comments/index"
   get "comments/new"
-  %w[about privacy terms contact].each do |page|
+  %w[about intro privacy terms contact].each do |page|
     get page, controller: "info", action: page
   end
 
@@ -11,7 +11,7 @@ Pipeline::Application.routes.draw do
 
   # ActiveAdmin.routes(self)
 
-  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks",registrations: "registrations"}
 
   resources :users , only: [:index, :show, :edit,:update]
   #resources :profiles , only: [:show, :edit,:update]

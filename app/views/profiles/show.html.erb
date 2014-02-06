@@ -1,26 +1,54 @@
 
-
-
 <%= render 'shared/link_to_profile' %>
 
-<aside class="col-xs-6 col-md-4">
-    <section>
-      <div class="" id="avata">
-        <%= render 'shared/avata', user: current_user, version: :thumb %>
-      </div>
-
-    </section>
-</aside>
-<div class="col-xs-12 col-sm-6 col-md-8">
-
+<div class="row docs-container">
+  <div class="col-xs-3 col-sm-3 col-md-3">
+   <%= image_tag( @user.image.url(:thumb), :class=>'img-rounded') %>
+  </div>
+  <div class="col-xs-9 col-sm-9 col-md-9">
+   <h4 class="media-heading"><%= @user.username %></h4>
+  </div>
 </div>
 
+<h3 id="bio" class="page-header">Biography</h3>
+<div class="row docs-container">
+<%=@user.profile.bio%>
+</div>
 
-<%= render partial: "name_tag", locals: { user: @user } %>
+<h3 id="lab" class="page-header">Lab</h3>
+<div class="row docs-container">
+<%=@user.profile.lab%>
+</div>
 
-
-<%= render 'social_profile'%>
-
-
-
+<h3 id="contacts" class="page-header">Contacts</h3>
+<div class="row">
+  <div class="highlight">
+    <ul class="media-list">
+      <li class="media">
+        <%= image_tag 'profile-home.png' , :size=>'32x32' , :class=>"pull-left"%>
+        <div class="media-body">
+            <%= @user.profile.url %>
+        </div>
+      </li>
+      <li class="media">
+        <%= image_tag 'profile-twitter.png' , :size=>'32x32' , :class=>"pull-left"%>
+        <div class="media-body">
+            <%= link_to "http://twitter.com/#{@user.profile.twitter}" %>
+        </div>
+      </li>
+      <li class="media">
+        <%= image_tag 'profile-linkedin.png' , :size=>'32x32' , :class=>"pull-left"%>
+        <div class="media-body">
+            <%= link_to "http://www.linkedin.com/in/#{@user.profile.linkedin}" %>
+        </div>
+      </li>
+      <li class="media">
+        <%= image_tag 'profile-google.png' , :size=>'32x32' , :class=>"pull-left"%>
+        <div class="media-body">
+          <%=@user.profile.google %>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
 

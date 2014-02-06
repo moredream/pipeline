@@ -6,22 +6,19 @@ class ApplicationController < ActionController::Base
 
 
   protected
-  def after_sign_in_path_for(resource)
-    flash[:notice] = "Welcome"
-    root_path
+  # def after_sign_in_path_for(resource)
+  #   flash[:notice] = "Welcome"
+  #   root_path
 
-    # unless current_user.profile.nil?
-    #   flash[:notice] = "Welcome"
-    #   root_path
-    # else
-    #   flash[:alert] = "Please complete your profile"
-    #   new_profile_path
-    # end
-  end
-
-  # def after_sign_up_path_for(resource)
-
+  #   # unless current_user.profile.nil?
+  #   #   flash[:notice] = "Welcome"
+  #   #   root_path
+  #   # else
+  #   #   flash[:alert] = "Please complete your profile"
+  #   #   new_profile_path
+  #   # end
   # end
+
 
   # def after_update_path_for(resource)
   #   user_path(resource)
