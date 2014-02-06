@@ -2,8 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+  devise :database_authenticatable, :registerable,:recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   #validates :slug, uniqueness: true, presence: true
   #before_validation :generate_slug
@@ -67,10 +66,6 @@ class User < ActiveRecord::Base
 
   def to_param
     "#{id}-#{username}".parameterize
-  end
-
-  def generate_slug
-    self.slug ||= username.parameterize
   end
 
 end

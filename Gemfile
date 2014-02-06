@@ -36,7 +36,7 @@ end
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+#gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
@@ -71,7 +71,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-linkedin-oauth2'
-gem 'rails4_client_side_validations'
+
 # gem 'activeadmin', github: 'gregbell/active_admin'
 # gem 'ransack'
 gem 'kaminari'

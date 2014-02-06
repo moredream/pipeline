@@ -1,3 +1,11 @@
+ready = ->
+  $('#user_editor').validate
+    debug: false,
+    rules:
+      'user[username]': required: true
+
+$(document).ready(ready)
+$(document).on('page:load', ready)
 
 jQuery ->
   new AvatarCropper()
