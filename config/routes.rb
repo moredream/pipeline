@@ -14,7 +14,7 @@ Pipeline::Application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks",registrations: "registrations"}
 
   resources :users , only: [:index, :show, :edit,:update]
-  #resources :profiles , only: [:show, :edit,:update]
+
   resources :labs
   resources :gurus
 
