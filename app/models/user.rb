@@ -1,3 +1,5 @@
+require 'file_size_validator'
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -21,6 +23,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile
 
   mount_uploader :image, ImageUploader
+  validates :image, :file_size => { :maximum => 0.5.megabytes.to_i }
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   after_update :crop_avatar
 
