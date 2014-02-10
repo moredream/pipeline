@@ -48,7 +48,7 @@ private
   end
 
   def lab_params
-    params.require(:lab).permit(:name,:image,:remote_image_url, :content, :category_ids=>[])
+    params.require(:lab).permit(:name,:image,:remote_image_url, :content, :category_tokens, :category_ids=>[])
   end
 
 end

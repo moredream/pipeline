@@ -1,8 +1,3 @@
-<% content_for :slidebar do %>
-  <div class="jumbotron">
-    <%= image_tag @lab.image.url(:large) %>
-  </div>
-<% end %>
 
 
 <div class="row">
@@ -26,3 +21,8 @@
     <%= link_to 'Back', labs_path %>
   </div>
 </div>
+<% content_for :slidebar do %>
+  <div class="image_place">
+    <%= image_tag @lab.image.url(:mobile) %>
+  </div>
+<% end %>

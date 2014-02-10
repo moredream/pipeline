@@ -17,13 +17,13 @@
       <%= f.text_area :content, :class => 'form-control', :placeholder=>"Content" , :rows=>"6"%>
     </div>
 
-    <div class="form-group">
-      <%= f.collection_select :category_ids, Category.order(:name), :id, :name, {}, {id:'lab_category' ,multiple:true, class: 'myselect'} %>
-    </div>
+
 
     <div class="form-group">
-      <%= f.text_field :category_ids, :class => 'myselect', :id=> 'teens_select2', :placeholder=>"Title" %>
+      <%= f.label :category_tokens, "Labs in Universities" %><br/>
+      <%= f.text_field :category_tokens ,data: {load: @lab.categories} , :class => 'form-control', :placeholder=>"Universities" %>
     </div>
+
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
         <%= f.submit nil, :class=> "btn btn-default" %>

@@ -16,6 +16,7 @@
 //= require jquery.Jcrop
 //= require jquery.validate
 //= require select2
+//= require jquery.tokeninput
 //= require turbolinks
 //= require_tree .
 //= require bootstrap
