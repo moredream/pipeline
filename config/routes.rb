@@ -15,6 +15,7 @@ Pipeline::Application.routes.draw do
 
   resources :users , only: [:index, :show, :edit,:update]
 
+
   resources :labs
   resources :gurus
 
@@ -25,6 +26,7 @@ Pipeline::Application.routes.draw do
 
   resources :articles, concerns: :sociable
   resources :programs, concerns: :sociable
+  resources :categories, only: [:index]
 
   get 'tags/:tag', to: 'articles#index', as: :tag
 
