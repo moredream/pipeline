@@ -4,10 +4,8 @@ class LabsController < ApplicationController
 
   respond_to :html, :json
 
-
   def index
-    @labs = Lab.all
-    respond_with(@labs)
+    respond_with(labs)
   end
 
   def new
@@ -40,13 +38,17 @@ class LabsController < ApplicationController
   end
 
 private
-  def lab_params
-    params.require(:lab).permit(:name, :url, :head, :content, :category_ids=>[])
+  def labs
+    @labs ||= Lab.order(:name)
   end
+  helper_method :labs
 
   def find_labs
     @lab = Lab.find(params[:id])
   end
 
+  def lab_params
+    params.require(:lab).permit(:name,:image,:remote_image_url, :content, :category_ids=>[])
+  end
 
 end

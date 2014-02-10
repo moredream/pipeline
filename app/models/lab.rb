@@ -7,6 +7,10 @@ class Lab < ActiveRecord::Base
 
   accepts_nested_attributes_for :categorizations, allow_destroy: true
 
+  mount_uploader :image, ImageUploader
+  validates :image, :file_size => { :maximum => 0.5.megabytes.to_i }
+
+
   def to_param
     "#{id}-#{name}".parameterize
   end

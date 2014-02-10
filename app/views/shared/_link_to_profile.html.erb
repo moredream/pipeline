@@ -1,8 +1,13 @@
 <div class="row">
   <ol class="breadcrumb">
-    <li><%= link_to_unless_current "My Profile", current_user, class: "" %></li>
+    <li><%= link_to "My Profile", current_user, class: "" %></li>
     <li>
-      <%= link_to_unless_current "Settings", edit_user_path(current_user), class: "" %>
+      <%= link_to "Settings", edit_user_path(current_user), class: "" %>
     </li>
+    <% if current_user.guru? %>
+    <li><%= current_user.guru.name %></li>
+    <%else%>
+    <li><%= link_to "Join mentoring", new_guru_path, class: "" %></li>
+    <%end %>
   </ol>
 </div>

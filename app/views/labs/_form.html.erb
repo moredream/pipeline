@@ -1,6 +1,6 @@
 
 
-<%= form_for  @lab , :html => {:id=>'lab_editor' , :class=>''} do |f| %>
+<%= form_for  @lab , :html => {:id=>'lab_editor' , :multipart=>true, :class=>''} do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
     <div class="form-group">
       <%= f.label :name, :class => 'control-label' %>
@@ -8,18 +8,13 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :url, :class => 'control-label' %>
-      <%= f.text_field :url, :class => 'form-control', :placeholder=>"Lab URL" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :head, :class => 'control-label' %>
-      <%= f.text_field :head, :class => 'form-control', :placeholder=>"Professor or Head of Lab" %>
+      <%= f.label :image, :class => 'control-label' %>
+      <%= f.file_field :image, :class => '', :placeholder=>"Lab URL" %>
     </div>
 
     <div class="form-group">
       <%= f.label :content, :class => 'control-label' %>
-      <%= f.text_area :content, :class => 'form-control', :placeholder=>"Content" , :rows=>"10"%>
+      <%= f.text_area :content, :class => 'form-control', :placeholder=>"Content" , :rows=>"6"%>
     </div>
 
    <div class="form-group">

@@ -32,12 +32,6 @@
             <%= link_to "Settings", edit_user_path(current_user), class: "" %>
           </li>
           <li class="divider"></li>
-          <% if current_user.guru? %>
-          <li><%= current_user.guru.name %></li>
-          <%else%>
-          <li><%= link_to "Join mentoring", new_guru_path, class: "" %></li>
-          <%end %>
-          <li class="divider"></li>
           <li><%= link_to "Password", edit_user_registration_path, class: "" %></li>
         </ul>
       </li>

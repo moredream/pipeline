@@ -1,23 +1,26 @@
   <% if user_signed_in? %>
-  <div class="row">
-    <div class="col-xs-12 col-md-8">
-      <%= render 'shared/labs_feed' %>
+    <div class="row">
+      <div class="col-xs-12 col-md-8">
+        <%= render 'shared/labs_feed' %>
+      </div>
     </div>
-  </div>
 
-  <% else %>
+    <% else %>
 
-  <div class="center hero-unit">
-    <h1>Welcome to the Sample App</h1>
+    <div class="center hero-unit">
+      <h1>Welcome to the Sample App</h1>
 
-    <h2>
-      This is the home page
-    </h2>
+      <h2>
+        This is the home page
+      </h2>
 
-    <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-large btn-primary" %>  or Sign with
-    <%= link_to image_tag("facebook.png", :border => 0) , user_omniauth_authorize_path(:facebook) %>
+      <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-large btn-primary" %>  or Sign with
+      <%= link_to image_tag("facebook.png", :border => 0) , user_omniauth_authorize_path(:facebook) %>
 
-  </div>
+    </div>
 
-  <% end %>
+    <% end %>
+
+
+
 
