@@ -54,13 +54,14 @@ gem 'bootstrap-sass'
 
 gem 'carrierwave'
 gem 'mini_magick'
+
 gem 'remotipart', '~> 1.2'
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
-  gem 'rack-mini-profiler'
+#  gem 'rack-mini-profiler'
   gem 'bullet'
 end
 
