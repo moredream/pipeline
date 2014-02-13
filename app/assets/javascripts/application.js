@@ -15,9 +15,11 @@
 //= require jquery.remotipart
 //= require jquery.Jcrop
 //= require jquery.validate
-//= require select2
 //= require jquery.tokeninput
+//= require grande.min
 //= require turbolinks
 //= require_tree .
 //= require bootstrap
-//= require grande.min
+
+
+

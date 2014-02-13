@@ -14,28 +14,26 @@
 
     <div class="form-group">
       <%= f.label :content, :class => 'control-label' %>
-      <%= f.hidden_field :content, :class => 'form-control', :placeholder=>"content" %>
-
-      <article class="content" id="lab-desc">
-          <%=raw @lab.content %>
-      </article>
+      <%= f.hidden_field :content, :class => 'form-control', :placeholder=>"" %>
+      <article class="content solidbox" id="lab-desc"><%=raw @lab.content%></article>
     </div>
 
     <div class="form-group">
-      <%= f.label :category_tokens, "Universities" %><br/>
+      <%= f.label :category_tokens, "Universities" %>
       <%= f.text_field :category_tokens ,data: {load: @lab.categories} , :class => 'form-control', :placeholder=>"Universities" %>
     </div>
 
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <%= f.submit nil, :class=> "btn btn-default" %>
-        <%= link_to 'Cancel', labs_path, :class => "btn btn-default" %>
-        <%= button_tag "Greeting",:id=>'test', :type=> 'button' %>
-      </div>
+        <%= button_tag "Update",:id=>'lab-button', :type=> 'button', :class=> "btn btn-default" %>
+        <%= link_to 'Cancel', @lab, :class => "btn btn-default" %>
     </div>
 
 <% end %>
 
-<script type="text/javascript">
-  grande.bind(document.querySelectorAll("article"));
-</script>
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    grande.bind(document.querySelectorAll("article"));
+  </script>
+<% end %>
+
+

@@ -15,7 +15,7 @@ $navbar-default-toggle-border-color:#380B12;
 
 $font-family-base: "Helvetica Neue";
 $grayMediumLight: #888;
-
+$blockquote-border-color: #00bfff;
 
 @import "bootstrap";
 @import "bootstrap/theme";
@@ -26,7 +26,6 @@ $grayMediumLight: #888;
 
 body {
   padding-top: 50px;
-  //background-image: image-url('univ-02.png');
 }
 
 .image_place {
@@ -118,6 +117,7 @@ footer {
   text-align: right;
 
 }
+
 /* Pagination */
 .apple_pagination {
   background: #f1f1f1;

@@ -4,17 +4,12 @@
 <div  id="lab" class="row">
 <% labs.each do |lab| %>
   <div class="col-xs-12  col-sm-4 col-md-4">
-      <div class="thumbnail">
 
+      <div class="thumbnail">
         <div class="media">
           <h4 class="media-heading"><%= link_to lab.name, lab %></h4>
           <div class="media-body">
-
-          </div>
-        </div>
-        <div class="media">
-          <div class="media-body">
-
+              <%= link_to image_tag(lab.image.url(:mobile)) ,lab  %>
           </div>
         </div>
       </div>

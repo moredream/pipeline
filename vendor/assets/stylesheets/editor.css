@@ -3,7 +3,7 @@
   src: url("fonts/medium-icons.woff");
 }
 
-body {
+/*body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-family: Georgia, serif;
@@ -12,7 +12,7 @@ body {
   color: #333332;
   padding-top: 50px;
 }
-
+*/
 .g-body h1,
 .g-body p,
 .g-body blockquote,
@@ -24,6 +24,7 @@ body {
 .g-body article {
   outline-style: none;
 }
+
 
 /* Override webkit's <article> default */
 .g-body h1 {
@@ -43,7 +44,7 @@ body {
 .g-body blockquote {
   font-weight: 400;
   font-style: italic;
-  border-left: 6px solid #60d778;
+  border-left: 6px solid #00bfff;
   padding-left: 20px;
   margin-left: -26px;
 }

@@ -1,18 +1,19 @@
-
-
-
-
+// Bootstrap-Sass
 @import "custom";
-@import "editor";
-@import "menu";
 
+// Vender
 @import "jquery.Jcrop";
 @import "token-input-mac";
 
-@import "select2";
-
-@import "labs";
+// Models
 @import "articles";
 @import "photos";
+
+@import "labs";
+
+//grande
+@import "menu";
+@import "editor";
+
 
 
