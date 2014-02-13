@@ -1,11 +1,9 @@
-$body-bg: #f6f6f6;
-$breadcrumb-bg:$body-bg;
+ $body-bg: #E4E6E5; //#f6f6f6;
+// $breadcrumb-bg:$body-bg;
 /* nav bar
-$navbar-default-color: #ffffff;
-
-
+transparent #CAC7B4;
  */
-$navbar-default-bg: #CAC7B4;
+$navbar-default-bg: #ffffff;
 $navbar-default-link-color: #380B12;
 $navbar-default-link-hover-color: #BEC1B8;
 
@@ -13,7 +11,7 @@ $navbar-default-toggle-hover-bg:#BEC1B8;
 $navbar-default-toggle-icon-bar-bg: #380B12;
 $navbar-default-toggle-border-color:#380B12;
 
-$font-family-base: "Helvetica Neue";
+// $font-family-base: "Helvetica Neue";
 $grayMediumLight: #888;
 $blockquote-border-color: #00bfff;
 
@@ -25,7 +23,27 @@ $blockquote-border-color: #00bfff;
 /* Padding below the footer and lighter body text */
 
 body {
-  padding-top: 50px;
+  // padding-top: 50px;
+  //background-color: transparent;
+    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.4;
+    text-rendering: optimizelegibility;
+}
+
+.navbar-header{
+  padding-left: 20px;
+}
+
+.navbar-nav {
+  font-weight: 400;
+}
+
+.navbar-default {
+  //background:transparent;
+  border-color: #e7e7e7; //#e7e7e7;
 }
 
 .image_place {
@@ -46,9 +64,7 @@ body {
     text-align:left;
 }
 
-.navbar-nav {
-  font-weight: 400;
-}
+
 
 .fill {
     height: 100%;

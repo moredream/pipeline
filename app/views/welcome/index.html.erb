@@ -1,7 +1,7 @@
   <% if user_signed_in? %>
     <div class="row">
       <div class="col-xs-12 col-md-8">
-        <%= render 'shared/labs_feed' %>
+        <%= render  'shared/labs_feed' , labs: @labs %>
       </div>
     </div>
 

@@ -1,47 +1,14 @@
-<div class="row">
-  <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
+<% labs.each do |lab| %>
+  <div class="col-xs-12  col-sm-4 col-md-4">
 
-      <div class="caption">
-        <h3>Overseas Chances</h3>
-        <p>...</p>
-        <p><a href="#" class="btn btn-default" role="button">Button</a>
-          <a href="#" class="btn btn-default" role="button">Button</a></p>
+      <div class="thumbnail">
+        <div class="media">
+          <h4 class="media-heading"><%= link_to lab.name, lab %></h4>
+          <div class="media-body">
+              <%= link_to image_tag(lab.image.url(:mobile)) ,lab  %>
+          </div>
+        </div>
       </div>
-    </div>
   </div>
-  <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
 
-      <div class="caption">
-        <h3>Labs Searching</h3>
-        <p>...</p>
-        <p><a href="#" class="btn btn-default" role="button">Button</a>
-          <a href="#" class="btn btn-default" role="button">Button</a></p>
-      </div>
-    </div>
-  </div>
-    <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-
-      <div class="caption">
-        <h3>Mentors Searching</h3>
-        <p>...</p>
-        <p><a href="#" class="btn btn-default" role="button">Button</a>
-          <a href="#" class="btn btn-default" role="button">Button</a></p>
-      </div>
-    </div>
-  </div>
-    <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-
-      <div class="caption">
-        <h3>Tech Searching</h3>
-        <p>...</p>
-        <p><a href="#" class="btn btn-default" role="button">Button</a>
-          <a href="#" class="btn btn-default" role="button">Button</a></p>
-      </div>
-    </div>
-  </div>
-</div>
-
+<% end %>
