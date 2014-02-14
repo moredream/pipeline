@@ -1,22 +1,26 @@
 // Place all the styles related to the labs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-
 .myselect {
   width: 100%;
+}
+
+.lab-title {
+  width: 100%;
+  height: 0px;
+}
+
+.lab-title-bg {
+  width: 100%;
+  height: 250px;
+  // background-image: url(/assets/lab-title.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 .lab-background {
   width: 100%;
   height: 310px;
-}
-
-.lab-bg1 {
-  width: 100%;
-  height: 10px;
-  background-repeat: no-repeat;
-  background-size: 100%;
 }
 
 .lab-bg {
@@ -26,8 +30,8 @@
   background-size: 100%;
 }
 
-.lab-title {
-color: #ffffff;
+.lab-title-name {
+  color: #ffffff;
 }
 
 

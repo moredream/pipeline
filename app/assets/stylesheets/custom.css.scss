@@ -6,7 +6,7 @@ transparent #CAC7B4;
 $navbar-default-bg: #ffffff;
 $navbar-default-link-color: #380B12;
 $navbar-default-link-hover-color: #BEC1B8;
-
+$navbar-margin-bottom: 2px;
 $navbar-default-toggle-hover-bg:#BEC1B8;
 $navbar-default-toggle-icon-bar-bg: #380B12;
 $navbar-default-toggle-border-color:#380B12;
@@ -23,14 +23,14 @@ $blockquote-border-color: #00bfff;
 /* Padding below the footer and lighter body text */
 
 body {
-  // padding-top: 50px;
+
   //background-color: transparent;
     font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
     font-style: normal;
     font-weight: 400;
-    letter-spacing: -0.02em;
-    line-height: 1.4;
-    text-rendering: optimizelegibility;
+    // letter-spacing: -0.02em;
+    // line-height: 1.4;
+    // text-rendering: optimizelegibility;
 }
 
 .navbar-header{
@@ -42,8 +42,9 @@ body {
 }
 
 .navbar-default {
-  //background:transparent;
-  border-color: #e7e7e7; //#e7e7e7;
+  // background:transparent;
+  border-color: #e7e7e7;
+  // margin-bottom: 1px;
 }
 
 .image_place {
@@ -62,13 +63,6 @@ body {
 .input-group-addon {
     min-width:200px;// if you want width please write here //
     text-align:left;
-}
-
-
-
-.fill {
-    height: 100%;
-    min-height: 100%;
 }
 
 .highlight {
