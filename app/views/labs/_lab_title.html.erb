@@ -1,0 +1,20 @@
+<div class='lab-title-bg' style="background-image: url(<%=background %>)">
+  <div class="lab-title"></div>
+
+  <div class="page-title">
+    <h2 class="lab-title-name"><%= lab.name %></h2>
+
+  </div>
+  <div class="name-tag">
+    <ul class="media-list page-title">
+      <li class="media">
+        <p class="pull-left" >
+           <%= image_tag( lab.user.image.url(:thumb), :class=>'media-object img-circle' ,:size=>'32x32') %>
+        </p>
+        <div class="media-body">
+          <h4><em> <%= "By #{lab.user.username}" %></em></h4>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

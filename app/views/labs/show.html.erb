@@ -1,33 +1,26 @@
+
+
 <% content_for :slidebar do %>
-  <div class="lab-bg">
-      <% if @lab.image.present? %>
-      <%= image_tag @lab.image.url(:large), :class=>'lab-background'%>
-      <% else %>
-      <%= image_tag 'univ-01.png', :class=>'lab-background'%>
-      <% end %>
-  </div>
+  <% if @lab.image.present? %>
+    <%= render partial: "lab_title", locals: {lab: @lab , background: @lab.image.url(:mobile) } %>
+  <% else %>
+    <%= render partial: "lab_title", locals: {lab: @lab , background: '/assets/lab-title.jpg' } %>
+  <% end %>
 <% end %>
 
 <div class="row">
-
-  <div class="col-xs-12  col-sm-12 col-md-12">
-      <p><h2 class="lab-title-name"><%= @lab.name %></h2></p>
-  </div>
-
-  <div class="col-xs-12  col-sm-12 col-md-12">
+  <div class="col-xs-12  col-sm-12">
+        <ul>
+          <% @lab.categories.each do |category| %>
+            <li class="token-input-token-mac"><%= category.name %></li>
+          <% end %>
+        </ul>
+    </div>
+  <div class="col-xs-12  col-sm-12">
      <%=raw @lab.content %>
   </div>
 
-
-  <div class="col-xs-12  col-sm-12 col-md-12">
-      <ul>
-        <% @lab.categories.each do |category| %>
-          <li class="token-input-token-mac"><%= category.name %></li>
-        <% end %>
-      </ul>
-  </div>
-
-  <div class="col-xs-12  col-sm-12 col-md-12">
+  <div class="col-xs-12  col-sm-12">
     <%= link_to 'Edit', edit_lab_path(@lab) %> |
     <%= link_to 'Back', labs_path %>
   </div>
