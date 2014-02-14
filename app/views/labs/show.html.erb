@@ -4,7 +4,7 @@
   <% if @lab.image.present? %>
     <%= render partial: "lab_title", locals: {lab: @lab , background: @lab.image.url(:mobile) } %>
   <% else %>
-    <%= render partial: "lab_title", locals: {lab: @lab , background: '/assets/lab-title.jpg' } %>
+    <%= render partial: "lab_title", locals: {lab: @lab , background: asset_url('lab-title.jpg') } %>
   <% end %>
 <% end %>
 
