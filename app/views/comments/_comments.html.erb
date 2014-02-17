@@ -5,15 +5,8 @@
 
   <% @comments.each do |comment| %>
     <li class="media">
-      <%= image_tag( comment.user.image.url(:thumb), :class=>'pull-left')  %>
-      <div class="media-body">
-        <h4 class="media-heading"><%= comment.user.username %></h4>
-        <%= comment.content %>
-        <% if current_user?(comment.user) %>
-        <%= link_to "delete", [@commentable, comment], method: :delete,
-                                       data: { confirm: "You sure?" },
-                                       title: comment.content %>  <% end %>
-      </div>
+
+      <%= render 'comments/comment_item', {comment: comment, commentable: @commentable} if comment.user.present? %>
     </li>
   <% end %>
 </ul>
