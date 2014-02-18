@@ -5,15 +5,16 @@ class Article < ActiveRecord::Base
   has_many :tags, through: :taggings
   has_many :taggings
 
-  scope :recents, -> {order("created_at desc")}
-  scope :trending, lambda { |num = nil| where('created_at > ?', 5.day.ago).order('created_at  desc'). limit(num) }
+  scope :trending,  lambda { |num = nil| includes(:tags, :user).where('created_at > ?', 5.day.ago).order('created_at  desc'). limit(num) }
 
   validates :title, presence: true
   validates :user_id, presence: true
   mount_uploader :image, ImageUploader
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+
   def self.tagged_with(name)
-    Tag.find_by_name!(name).articles
+    # Tag.find_by_name!(name).articles
+    includes(:tags).where("tags.name = ?", name).references(:tags)
   end
 
   def tag_list
@@ -22,6 +23,14 @@ class Article < ActiveRecord::Base
 
   def to_param
     "#{id}-#{title}".parameterize
+  end
+
+  def self.trends(num)
+    if num.present?
+      includes(:tags, :user).where('created_at > ?', 5.day.ago).order('created_at  desc').limit(num)
+    else
+      includes(:tags, :user).where('created_at > ?', 5.day.ago).order('created_at  desc')
+    end
   end
 
 end

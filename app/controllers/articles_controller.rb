@@ -65,7 +65,7 @@ private
     if params[:tag]
       @articles ||=  Article.tagged_with(params[:tag])
     else
-      @articles ||= Article.trending.includes(:tags)
+      @articles ||=  Article.trends('')
     end
   end
 

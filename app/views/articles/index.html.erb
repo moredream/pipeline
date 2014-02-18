@@ -1,11 +1,8 @@
 <% content_for :slidebar do %>
-  <div  class="tag_cloud">
+  <div class="tag_cloud">
     <%= link_to 'All', articles_path, class: "label label-info" %>
     <%  tags.each do |tag| %>
-
-
     <%= link_to tag.name, tag_path(tag.name), class: tag_class(tag.level) %>
-
     <% end %>
   </div>
 <% end %>
@@ -13,16 +10,25 @@
 
 <div  id="article" class="row">
 <% articles.each do |article| %>
-  <div class="col-xs-12  col-sm-4 col-md-4">
-      <div class="thumbnail docs-container ">
 
+  <div class="col-xs-12  col-sm-12 col-md-12">
+      <div class="thumbnail docs-container ">
         <div class="media">
           <h4 class="media-heading"><%= link_to article.title, article %></h4>
-          <div class="media-body">
-            <%= link_to image_tag(article.image.url(:mobile), :class=> 'media-object') , article %>
+          <div class="media-body crop">
+              <%= link_to image_tag(article.image.url(:mobile), :class=> 'place media-object') , article %>
           </div>
         </div>
         <div class="media">
+          <p class="pull-left" >
+             <%= image_tag( article.user.image.url(:thumb), :class=>'media-object img-circle' ,:size=>'32x32') %>
+          </p>
+          <div class="media-body">
+            <h4><em> <%= "By #{article.user.username}" %></em></h4>
+          </div>
+        </div>
+        <div class="media">
+          <h4></h4>
           <div class="media-body">
               <%= tag_map(article.tags)  %>
           </div>
