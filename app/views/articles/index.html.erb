@@ -1,8 +1,20 @@
+<% content_for :slidebar do %>
+  <div  class="tag_cloud">
+    <%= link_to 'All', articles_path, class: "label label-info" %>
+    <%  tags.each do |tag| %>
+
+
+    <%= link_to tag.name, tag_path(tag.name), class: tag_class(tag.level) %>
+
+    <% end %>
+  </div>
+<% end %>
+
 
 <div  id="article" class="row">
-<% @articles.each do |article| %>
+<% articles.each do |article| %>
   <div class="col-xs-12  col-sm-4 col-md-4">
-      <div class="thumbnail">
+      <div class="thumbnail docs-container ">
 
         <div class="media">
           <h4 class="media-heading"><%= link_to article.title, article %></h4>
@@ -24,13 +36,5 @@
 <%= link_to 'New article', new_article_path ,:class => 'btn btn-default' %>
 
 
-<div class="row">
-  <div id="tag_cloud" >
-    <%= link_to 'All', articles_path, class: "m" %>
 
-    <% tag_cloud Article.tag_counts, %w[m m m] do |tag, css_class| %>
-    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-    <% end %>
-  </div>
-</div>
 

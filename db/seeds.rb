@@ -5,6 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }) { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel') city: cities.first)
+Tag.delete_all
+Tag.create( name: 'Food', level: 'default')
+Tag.create( name: 'Love', level: 'success')
+Tag.create( name: 'Jobs', level: 'primary')
+Tag.create( name: 'Language' ,level: 'default')
+Tag.create( name: 'House & Room', level: 'primary')
+Tag.create( name: 'Buy & Sell', level: 'primary')
+Tag.create( name: 'Q & A' ,level:  'info')
+Tag.create( name: 'Warning' ,level: 'warning')
+Tag.create( name: 'Danger', level: 'danger')
+
+
+
 Category.delete_all
 
 

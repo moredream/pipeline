@@ -57,14 +57,6 @@ gem 'mini_magick'
 
 gem 'remotipart', '~> 1.2'
 
-group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'meta_request'
-#  gem 'rack-mini-profiler'
-  gem 'bullet'
-end
-
 gem 'figaro'
 
 gem 'devise'
@@ -76,6 +68,14 @@ gem 'omniauth-linkedin-oauth2'
 # gem 'activeadmin', github: 'gregbell/active_admin'
 # gem 'ransack'
 gem 'kaminari'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+#  gem 'rack-mini-profiler'
+  gem 'bullet'
+end
 
 gem "rspec-rails", :group => [:test, :development]
 gem "populator", :group => [:test, :development]

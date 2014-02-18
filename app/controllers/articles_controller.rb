@@ -3,15 +3,6 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    #@articles = Article.trending(5)
-
-    if params[:tag]
-      @articles = Article.tagged_with(params[:tag])
-    else
-      @articles = Article.trending.includes(:tags)
-    end
-    @article.build_tag if @articles.tag_counts.nil?
-
 
   end
 
@@ -60,6 +51,23 @@ private
   end
 
   def article_params
-    params.require(:article).permit(:title, :content, :image, :remote_image_url,:location, :date, :tag_list)
+    params.require(:article).permit(:title, :content, :image,:tag_ids=>[])
   end
+
+
+  def tags
+    @tags ||= Tag.order(:name)
+  end
+
+  helper_method :tags
+
+  def articles
+    if params[:tag]
+      @articles ||=  Article.tagged_with(params[:tag])
+    else
+      @articles ||= Article.trending.includes(:tags)
+    end
+  end
+
+  helper_method :articles
 end

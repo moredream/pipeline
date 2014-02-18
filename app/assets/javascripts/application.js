@@ -17,6 +17,7 @@
 //= require jquery.validate
 //= require jquery.tokeninput
 //= require grande.min
+//= require select2
 //= require turbolinks
 //= require_tree .
 //= require bootstrap

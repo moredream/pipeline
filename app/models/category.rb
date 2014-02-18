@@ -4,7 +4,9 @@ class Category < ActiveRecord::Base
 
   def self.tokens(query)
 
-    categories = where("lower(name) like ?", "%#{query}%")
+   # categories = where("lower(name) like ?", "%#{query}%")
+    categories = where("lower(name) like ?", "%#{query.downcase}%")
+
     # if categories.empty?
     #   [{id: "<<<#{query}>>>", name: "New: \"#{query}\""}]
     # else
