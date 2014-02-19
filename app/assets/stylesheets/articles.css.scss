@@ -13,7 +13,7 @@
 }
 
 .place {
-  width: 200px;
+  width: 300px;
   height: 200px;
   overflow: auto;
   background-color: #B6B6B6;
@@ -23,4 +23,25 @@
     width: 300px;
     height: 200px;
     overflow: hidden;
+}
+
+
+.writer {
+  color: #4D4D4D;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: italic;
+  letter-spacing: 0;
+  line-height: 14px;
+}
+
+.post-title{
+    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+    font-style: normal;
+    color: #333332;
+    font-size: 18px;
+    line-height: 1.4;
+    text-rendering: optimizelegibility;
 }

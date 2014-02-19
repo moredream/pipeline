@@ -14,7 +14,7 @@ class Article < ActiveRecord::Base
 
   def self.tagged_with(name)
     # Tag.find_by_name!(name).articles
-    includes(:tags).where("tags.name = ?", name).references(:tags)
+    includes(:tags, :user).where("tags.name = ?", name).references(:tags)
   end
 
   def tag_list
@@ -31,6 +31,10 @@ class Article < ActiveRecord::Base
     else
       includes(:tags, :user).where('created_at > ?', 5.day.ago).order('created_at  desc')
     end
+  end
+
+  def to_writer
+     "By #{user.username} #{created_at.strftime("%B %d, %Y")}".titleize
   end
 
 end

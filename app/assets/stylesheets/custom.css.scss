@@ -41,9 +41,7 @@ body {
 }
 
 .navbar-default {
-  // background:transparent;
   border-color: #e7e7e7;
-  // margin-bottom: 1px;
 }
 
 .image_place {
@@ -52,7 +50,9 @@ body {
   background-color: #B6B6B6;
 }
 
-
+.white{
+  color: #ffffff;
+}
 .nav > li {
   position: center;
   display: block;
@@ -60,7 +60,7 @@ body {
 }
 
 .input-group-addon {
-    min-width:200px;// if you want width please write here //
+    min-width:200px;
     text-align:left;
 }
 
