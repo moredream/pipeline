@@ -16,12 +16,18 @@ class Lab < ActiveRecord::Base
   attr_reader :category_tokens
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
 
+  scope :trending,  lambda { |num = nil| includes(:user).order('name  desc'). limit(num) }
+
   def category_tokens=(tokens)
     self.category_ids = Category.ids_from_tokens(tokens)
   end
 
   def to_param
     "#{id}-#{name}".parameterize
+  end
+
+  def to_writer
+     "By #{user.username} #{created_at.strftime("%B %d, %Y")}".titleize
   end
 
   private

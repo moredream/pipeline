@@ -39,7 +39,7 @@ class LabsController < ApplicationController
 
 private
   def labs
-    @labs ||= Lab.order(:name)
+    @labs ||= Lab.trending
   end
   helper_method :labs
 

@@ -82,6 +82,29 @@ body {
     margin-bottom: 60px;
 }
 
+.place {
+  width: 300px;
+  height: 200px;
+  overflow: auto;
+  background-color: #B6B6B6;
+}
+
+.crop {
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+}
+
+
+.writer {
+  color: #4D4D4D;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: italic;
+  letter-spacing: 0;
+  line-height: 14px;
+}
+
 /* footer */
 footer {
   margin-top: 45px;
