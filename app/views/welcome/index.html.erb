@@ -1,8 +1,8 @@
   <% if user_signed_in? %>
     <div class="row">
       <% @labs.each do |lab| %>
-        <div class="col-xs-12  col-sm-6 col-md-6">
-            <div class="thumbnail">
+        <div class="col-xs-12  col-sm-4 col-md-4">
+            <div class="thumbnail docs-container">
               <%= render partial: "shared/item_box", locals: { title: lab.name, item: lab, content: '' } %>
             </div>
         </div>

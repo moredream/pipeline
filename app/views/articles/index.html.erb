@@ -7,34 +7,14 @@
   </div>
 <% end %>
 
-
 <div  id="article" class="row">
 <% articles.each do |article| %>
 
-  <div class="col-xs-12  col-sm-12 col-md-12">
+  <div class="col-xs-12 col-sm-12 col-md-12">
       <div class="thumbnail docs-container ">
-        <div class="media">
-          <h4 class="media-heading"><%= link_to article.title.titleize, article , :class=>'post-title' %></h4>
-          <div class="media-body">
-              <div class="crop">
-               <%= link_to image_tag(article.image.url(:mobile), :class=> 'place media-object') , article %>
-              </div>
-          </div>
-        </div>
-        <div class="media">
-          <h4 class="writer"><%= article.to_writer %></h4>
-          <div class="media-body">
-            <%= truncate(article.content , length: 140) %>
-          </div>
-        </div>
-        <div class="media">
-          <div class="media-body">
-              <%= tag_map(article.tags)  %>
-          </div>
-        </div>
+           <%= render partial: "article", locals: { article:  article } %>
       </div>
   </div>
-
 <% end %>
 </div>
 

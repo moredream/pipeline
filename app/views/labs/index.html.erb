@@ -4,7 +4,7 @@
 <div  id="lab" class="row">
 <% labs.each do |lab| %>
   <div class="col-xs-12  col-sm-6 col-md-6">
-      <div class="thumbnail">
+      <div class="thumbnail docs-container">
         <%= render partial: "shared/item_box", locals: { title: lab.name, item: lab, content: '' } %>
       </div>
   </div>

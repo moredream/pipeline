@@ -1,0 +1,15 @@
+<div class="media">
+  <h4 class="media-heading"><%= link_to article.title.titleize, article , :class=>'post-title' %></h4>
+  <div class="crop-xs pull-left">
+       <%= link_to image_tag(article.image.url(:mobile), :class=> 'place-xs media-object') , article %>
+  </div>
+  <div class="media-body visible-sm visible-md visible-lg">
+      <%= truncate(article.content , length: 140) %>
+  </div>
+</div>
+<div class="media">
+  <h4 class="writer"><%= article.to_writer %></h4>
+  <div class="media-body">
+      <%= tag_map(article.tags)  %>
+  </div>
+</div>
