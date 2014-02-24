@@ -70,21 +70,11 @@ private
 
   def articles
 
-    # if params[:tag]
-    #   @articles ||=  Article.tagged_with(params[:tag])
-    # else
-    #   @articles ||=  Article.trends('')
-    # end
-
     if params[:q]
       @articles ||= Article.search(params[:q])
     else
       @articles ||=  Article.trends('')
     end
-
-
-
-
 
   end
 

@@ -1,19 +1,14 @@
-<h1>Listing Members</h1>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Member</th>
-      <th>Email</th>
-    </tr>
-  </thead>
+<h3 id="" class="page-header">Mentors</h3>
+<h3></h3>
+<div id="lab" class="row">
+<% users.each do |user| %>
+  <div class="col-xs-12  col-sm-6 col-md-6">
+      <div class="thumbnail docs-container">
+        <%= render partial: "user_item", locals: {item: user, title: user.username } %>
+      </div>
+  </div>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= link_to user.username , user%></td>
-        <td><%= user.email %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% end %>
+</div>
+

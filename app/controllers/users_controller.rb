@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = User.all
+    users
   end
 
   def show
@@ -27,6 +27,10 @@ class UsersController < ApplicationController
   end
 
 private
+  def users
+    @users ||= User.all
+  end
+  helper_method :users
 
   def find_user
     @user = User.find(params[:id])
