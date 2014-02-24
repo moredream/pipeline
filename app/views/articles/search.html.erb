@@ -15,16 +15,12 @@
 
 <div  id="article" class="row">
 <% articles.each do |article| %>
+
   <div class="col-xs-12 col-sm-12 col-md-12">
       <div class="thumbnail docs-container ">
           <%= render partial: "article", locals: { item:  article , content: article.content } %>
-
       </div>
   </div>
 <% end %>
 </div>
-
-
-
-
 

@@ -1,15 +1,15 @@
 
 <h3 id="" class="page-header">Trending Labs & Techs.</h3>
-
+<%= link_to 'New lab', new_lab_path ,:class => 'btn btn-default' %>
+<h3></h3>
 <div  id="lab" class="row">
 <% labs.each do |lab| %>
   <div class="col-xs-12  col-sm-6 col-md-6">
       <div class="thumbnail docs-container">
-        <%= render partial: "shared/item_box", locals: { title: lab.name, item: lab, content: '' } %>
+        <%= render partial: "lab_item", locals: { title: lab.name, item: lab, content: '' } %>
       </div>
   </div>
 
 <% end %>
 </div>
 
-<%= link_to 'New lab', new_lab_path ,:class => 'btn btn-default' %>

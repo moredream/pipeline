@@ -5,12 +5,28 @@ class Article < ActiveRecord::Base
   has_many :tags, through: :taggings
   has_many :taggings
 
-  scope :trending,  lambda { |num = nil| includes(:tags, :user).where('created_at > ?', 5.day.ago).order('created_at  desc'). limit(num) }
-
   validates :title, presence: true
   validates :user_id, presence: true
   mount_uploader :image, ImageUploader
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+
+  scope :trending,  lambda { |num = nil| includes(:tags, :user).where('created_at > ?', 15.day.ago).order('created_at  desc'). limit(num) }
+
+  scope :available,  lambda { |num = nil| includes(:tags, :user).limit(num) }
+  #
+  # scope :not_discontinued,  -> { where("discontinued_at is null or discontinued_at > ?", Time.zone.now) }
+  # scope :in_stock,          -> { where("stock >= ?", 2) }
+  # scope :available,         -> { released.not_discontinued.in_stock }
+
+
+  def self.search(query)
+    trending.where("title like ?", "%#{query}%")
+  end
+
+  def self.search_tags(query, tag_id)
+    available.where("title like ?", "%#{query}%")
+    available.where("tags.id = ?", tag_id).references(:tags) if tag_id.present?
+  end
 
   def self.tagged_with(name)
     # Tag.find_by_name!(name).articles
@@ -27,14 +43,16 @@ class Article < ActiveRecord::Base
 
   def self.trends(num)
     if num.present?
-      includes(:tags, :user).where('created_at > ?', 5.day.ago).order('created_at  desc').limit(num)
+      trending.limit(num)
     else
-      includes(:tags, :user).where('created_at > ?', 5.day.ago).order('created_at  desc')
+      trending
     end
   end
 
   def to_writer
      "By #{user.username} #{created_at.strftime("%B %d, %Y")}".titleize
   end
+
+
 
 end

@@ -4,6 +4,12 @@ class ArticlesController < ApplicationController
 
   def index
 
+
+  end
+
+  def search
+     @search = Article.includes(:tags,:user).search_tags(params[:q], params[:tag_id])
+     @articles = @search
   end
 
   def new
@@ -46,6 +52,7 @@ class ArticlesController < ApplicationController
   end
 
 private
+
   def set_article
     @article = Article.find(params[:id])
   end
@@ -62,11 +69,23 @@ private
   helper_method :tags
 
   def articles
-    if params[:tag]
-      @articles ||=  Article.tagged_with(params[:tag])
+
+    # if params[:tag]
+    #   @articles ||=  Article.tagged_with(params[:tag])
+    # else
+    #   @articles ||=  Article.trends('')
+    # end
+
+    if params[:q]
+      @articles ||= Article.search(params[:q])
     else
       @articles ||=  Article.trends('')
     end
+
+
+
+
+
   end
 
   helper_method :articles

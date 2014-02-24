@@ -24,11 +24,16 @@ Pipeline::Application.routes.draw do
     resources :comments
   end
 
-  resources :articles, concerns: :sociable
+  # resources :articles, concerns: :sociable
   resources :programs, concerns: :sociable
+
+  resources :articles do
+    concerns :sociable
+    collection { get :search, to: 'articles#search' }
+  end
   resources :categories, only: [:index]
 
-  get 'tags/:tag', to: 'articles#index', as: :tag
+  get 'trends/:tag', to: 'articles#index', as: :tag
 
   get "welcome/index"
 

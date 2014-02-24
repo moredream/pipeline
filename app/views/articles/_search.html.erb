@@ -1,0 +1,11 @@
+<%= form_tag search_articles_path, :method => :get  , :class=>'form-inline' do  %>
+  <div class="form-group">
+    <%= text_field_tag :q, params[:q], :class => "form-control", :placeholder=>"Keywords"  %>
+  </div>
+  <div class="form-group">
+    <%= select_tag "tag_id", options_from_collection_for_select(tags, :id, :name,:selected=> params[:tag_id]), include_blank: true,  class: 'form-control' %>
+  </div>
+  <div class="form-group">
+  <%= submit_tag "Search", :name => nil ,:class => 'btn btn-default' %>
+  </div>
+<% end %>

@@ -5,9 +5,9 @@
 .tag_cloud {
 
   border: 1px solid #e5e5e5;
-  min-height: 70px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  min-height: 100px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   text-align: center;
 
 }
@@ -22,4 +22,11 @@
     font-size: 18px;
     line-height: 1.4;
     text-rendering: optimizelegibility;
+}
+
+
+
+.tags {
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
