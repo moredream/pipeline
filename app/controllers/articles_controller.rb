@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
@@ -26,11 +27,14 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @commentable = @article
+    @comments = @commentable.comments.available.page(params[:page]).per(10)
+    @comment = Comment.new
+
+    # To-Do Photo List by Jquery Upload
     @attachable = @article
     @photos = @attachable.photos
-    @commentable = @article
-    @comments = @commentable.comments.page(params[:page]).per(10)
-    @comment = Comment.new
+
   end
 
   def edit
@@ -73,7 +77,7 @@ private
     if params[:q]
       @articles ||= Article.search(params[:q])
     else
-      @articles ||=  Article.trends('')
+      @articles ||= Article.trends('')
     end
 
   end

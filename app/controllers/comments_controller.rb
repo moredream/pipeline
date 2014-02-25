@@ -3,10 +3,8 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:destroy]
 
   def index
-    @comments = @commentable.comments
+    @comments = @commentable.comments.available
   end
-
-
 
   def new
     @comment = @commentable.comments.new

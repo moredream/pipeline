@@ -1,43 +1,45 @@
+<% content_for :slidebar do %>
+<div class="article-bg">
+  <div class="article">
+    <p><h4 class="text-center"><%= @article.title.titleize %></h4></p>
+    <h4 class="writer text-center"> <%= @article.to_writer %></h4>
+    <%=render 'tag_items', {tags: @article.tags } %>
+  </div>
+</div>
+<% end %>
 
   <div class="row">
-    <div class="col-xs-12  col-sm-12 col-md-12">
-        <p><h3><%= @article.title %></h3></p>
-    </div>
 
-
-    <div class="col-xs-12  col-sm-12 col-md-12">
+    <div class="">
       <p> <%= @article.content %></p>
     </div>
     <div class="col-xs-12  col-sm-12 col-md-12">
-        <%= image_tag @article.image.url(:mobile) %>
+       <%= image_tag @article.image.url(:mobile), :class =>'thumbnail' if @article.image.present? %>
     </div>
+
     <div class="col-xs-12  col-sm-12 col-md-12">
-      <%=render 'tag_items', {tags: @article.tags } %>
+    <%= link_to 'Back', articles_path %>
+    <%= link_to 'Edit', edit_article_path(@article) if current_user?(@article.user)  %>
+    <%= link_to 'Like', edit_article_path(@article) %>
+
+
     </div>
   </div>
+
   <div class="row">
+     <div class="col-xs-12  col-sm-12 col-md-12">
+      <p><%= pluralize(@article.comments_count, "Comment") %></p>
+    </div>
+    <div class="col-xs-12  col-sm-12 col-md-12">
+      <%= render "comments/form" %>
+    </div>
     <div class="col-xs-12  col-sm-12 col-md-12">
     <%= render 'photos/photos_list' %>
     </div>
   </div>
-
   <div class="row">
     <div class="col-xs-12  col-sm-12 col-md-12">
-    <%= render "comments/comments" %>
-    </div>
-  </div>
-
-  <div class="row">
-      <%= render "comments/form" %>
-  </div>
-
-
-  <div class="row">
-    <div class="col-xs-12  col-sm-12 col-md-12">
-  <%= link_to 'Edit', edit_article_path(@article) %> |
-  <%= link_to "Add a Photo", new_article_photo_path(@article) %> |
-  <%= link_to 'Back', articles_path %>
-
+      <%= render "comments/comments" if @article.comments_count > 0 %>
     </div>
   </div>
 

@@ -5,7 +5,7 @@
 .tag_cloud {
 
   border: 1px solid #e5e5e5;
-  min-height: 100px;
+  min-height: 60px;
   padding-top: 15px;
   padding-bottom: 15px;
   text-align: center;
@@ -29,4 +29,20 @@
 .tags {
   margin-top: 3px;
   margin-bottom: 3px;
+}
+
+.article-bg{
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-image: asset_url('article-title.jpg') ;
+  height: 120px;
+  width: 100%;
+}
+
+.article{
+  // background-color: rgba(0, 0, 0, 0.2);
+  vertical-align: middle;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #E4E6E5;
 }

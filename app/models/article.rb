@@ -9,9 +9,9 @@ class Article < ActiveRecord::Base
   validates :user_id, presence: true
   mount_uploader :image, ImageUploader
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  attr_readonly :comments_count
 
   scope :trending,  lambda { |num = nil| includes(:tags, :user).where('created_at > ?', 15.day.ago).order('created_at  desc'). limit(num) }
-
   scope :available,  lambda { |num = nil| includes(:tags, :user).limit(num) }
   #
   # scope :not_discontinued,  -> { where("discontinued_at is null or discontinued_at > ?", Time.zone.now) }
@@ -52,7 +52,4 @@ class Article < ActiveRecord::Base
   def to_writer
      "By #{user.username} #{created_at.strftime("%B %d, %Y")}".titleize
   end
-
-
-
 end
