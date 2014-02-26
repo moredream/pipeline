@@ -11,8 +11,8 @@ class Article < ActiveRecord::Base
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   attr_readonly :comments_count
 
-  scope :trending,  lambda { |num = nil| includes(:tags, :user).where('created_at > ?', 15.day.ago).order('created_at  desc'). limit(num) }
-  scope :available,  lambda { |num = nil| includes(:tags, :user).limit(num) }
+  scope :trending,  lambda { |num = nil| includes( :user).where('created_at > ?', 15.day.ago).order('created_at  desc'). limit(num) }
+  scope :available,  lambda { |num = nil| includes(:user).limit(num) }
 
   acts_as_votable
 
@@ -27,13 +27,13 @@ class Article < ActiveRecord::Base
   end
 
   def self.search_tags(query, tag_id)
-    available.where("title like ?", "%#{query}%")
-    available.where("tags.id = ?", tag_id).references(:tags) if tag_id.present?
+    available.where("title like ?", "%#{query}%") if query.present?
+    available.includes(:tags).where("tags.id = ?", tag_id).references(:tags) if tag_id.present?
   end
 
   def self.tagged_with(name)
-    # Tag.find_by_name!(name).articles
-    includes(:tags, :user).where("tags.name = ?", name).references(:tags)
+    Tag.find_by_name!(name).articles
+    # includes(:tags, :user).where("tags.name = ?", name).references(:tags)
   end
 
   def tag_list

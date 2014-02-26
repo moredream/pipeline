@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
   end
 
   def search
-     @search = Article.includes(:tags,:user).search_tags(params[:q], params[:tag_id])
+     @search = Article.search_tags(params[:q], params[:tag_id])
      @articles = @search
   end
 
