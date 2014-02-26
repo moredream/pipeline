@@ -13,6 +13,9 @@ class Article < ActiveRecord::Base
 
   scope :trending,  lambda { |num = nil| includes(:tags, :user).where('created_at > ?', 15.day.ago).order('created_at  desc'). limit(num) }
   scope :available,  lambda { |num = nil| includes(:tags, :user).limit(num) }
+
+  acts_as_votable
+
   #
   # scope :not_discontinued,  -> { where("discontinued_at is null or discontinued_at > ?", Time.zone.now) }
   # scope :in_stock,          -> { where("stock >= ?", 2) }

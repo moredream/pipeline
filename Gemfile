@@ -67,6 +67,7 @@ gem 'omniauth-linkedin-oauth2'
 
 # gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'kaminari'
+gem 'acts_as_votable', '~> 0.8.0'
 
 group :development do
   gem 'better_errors'

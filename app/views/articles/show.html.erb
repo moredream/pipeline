@@ -16,12 +16,14 @@
     <div class="col-xs-12  col-sm-12 col-md-12">
        <%= image_tag @article.image.url(:mobile), :class =>'thumbnail' if @article.image.present? %>
     </div>
-
+    <div class="col-xs-12  col-sm-12 col-md-12">
+       <%= @article.cached_votes_up %> / <%= @article.cached_votes_total%>
+    </div>
     <div class="col-xs-12  col-sm-12 col-md-12">
     <%= link_to 'Back', articles_path %>
     <%= link_to 'Edit', edit_article_path(@article) if current_user?(@article.user)  %>
-    <%= link_to 'Like', edit_article_path(@article) %>
-
+    <%= link_to "Like", like_article_path(@article), method: :put %>
+    <%= link_to "Dislike", dislike_article_path(@article), method: :put %>
 
     </div>
   </div>

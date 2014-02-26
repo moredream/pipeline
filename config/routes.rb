@@ -29,6 +29,10 @@ Pipeline::Application.routes.draw do
 
   resources :articles do
     concerns :sociable
+    member do
+      put "like", to: "articles#upvote"
+      put "dislike", to: "articles#downvote"
+    end
     collection { get :search, to: 'articles#search' }
   end
   resources :categories, only: [:index]

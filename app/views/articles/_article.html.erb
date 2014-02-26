@@ -13,6 +13,9 @@
       <%= truncate(content , length: 140)  if content.present? %>
   </div>
   <div class="media-body">
+     <p><%= pluralize(item.comments_count, "Comment") %> <%= pluralize(item.cached_votes_up, "Like") %></p>
+  </div>
+  <div class="media-body">
       <%= tag_map(item.tags) %>
   </div>
 </div>

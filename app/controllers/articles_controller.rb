@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
   def index
 
@@ -55,6 +55,17 @@ class ArticlesController < ApplicationController
     redirect_to articles_url
   end
 
+  def upvote
+    @article.liked_by current_user
+    redirect_to @article
+  end
+
+  def downvote
+    @article.downvote_from current_user
+    redirect_to @article
+  end
+
+
 private
 
   def set_article
@@ -64,7 +75,6 @@ private
   def article_params
     params.require(:article).permit(:title, :content, :image,:tag_ids=>[])
   end
-
 
   def tags
     @tags ||= Tag.order(:name)

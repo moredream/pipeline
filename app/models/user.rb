@@ -24,8 +24,11 @@ class User < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
   validates :image, :file_size => { :maximum => 0.5.megabytes.to_i }
+
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   after_update :crop_avatar
+
+  acts_as_voter
 
  # scope :mentor, -> {where(membership_type: 'Member')}
 
