@@ -31,7 +31,7 @@
   <div class="row">
      <div class="col-xs-12  col-sm-12 col-md-12">
       <p><%= pluralize(@article.comments_count, "Comment") %></p>
-      <%= link_to "Comments", like_article_path(@article), method: :put %>
+      <%= link_to "Comments", article_comments_path(@article) %>
     </div>
     <div class="col-xs-12  col-sm-12 col-md-12">
       <%= render "comments/form" %>

@@ -9,8 +9,7 @@ class ArticlesController < ApplicationController
   end
 
   def search
-     @search = Article.search_tags(params[:q], params[:tag_id])
-     @articles = @search
+
   end
 
   def new
@@ -84,10 +83,10 @@ private
 
   def articles
 
-    if params[:q]
-      @articles ||= Article.search(params[:q])
+    if params[:q] || params[:tag_id]
+      @articles ||= Article.search_tags(params[:q], params[:tag_id]).page(params[:page]).per(2)
     else
-      @articles ||= Article.trends('')
+      @articles ||= Article.trends('').page(params[:page]).per(2)
     end
 
   end

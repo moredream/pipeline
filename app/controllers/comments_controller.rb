@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:destroy]
 
   def index
-    @comments = @commentable.comments.available
+    @comments = @commentable.comments.available.page(params[:page]).per(10)
   end
 
   def new
