@@ -23,20 +23,14 @@ $(document).on('page:load', ready2)
 
 
 endless = ->
-  isScrolledIntoView = (elem) ->
-          docViewTop = $(window).scrollTop()
-          docViewBottom = docViewTop + $(window).height()
-          elemTop = $(elem).offset().top
-          elemBottom = elemTop + $(elem).height()
-          (elemTop >= docViewTop) && (elemTop <= docViewBottom)
-
   if $('.pagination').length
           $(window).scroll ->
                   url = $('.pagination .next a').attr('href')
                   if url &&  $(window).scrollTop() > $(document).height() - $(window).height() - 50
-                          $('.pagination').text('Fetching more products...')
+                          $('.pagination').text('Loading more ...')
                           $.getScript(url)
     $(window).scroll()
+
 
 
 $(document).ready(endless)
