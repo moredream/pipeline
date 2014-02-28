@@ -12,11 +12,7 @@
   <%= render 'photos/form_inline' %>
 </div>
 <div class="row">
-<%= render "comments/comments" %>
-</div>
-
-<div class="row">
-  <%= render "comments/form" %>
+<%= link_to pluralize(@program.comments_count, "Comment"),  program_comments_path(@program)  %>
 </div>
 
 <div class="row">
