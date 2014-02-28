@@ -8,31 +8,32 @@
 </div>
 <% end %>
 
-  <div class="row">
-    <div class="">
-      <p> <%= @article.content %></p>
-    </div>
-    <div class="col-xs-12  col-sm-12 col-md-12">
-       <%= image_tag @article.image.url(:mobile), :class =>'thumbnail' if @article.image.present? %>
-    </div>
-    <div id="vote" class="col-xs-12  col-sm-12 col-md-12">
-      <%= pluralize(@article.cached_votes_up, "Like") %>
-    </div>
-
-    <div class="col-xs-12  col-sm-12 col-md-12">
-    <%= link_to 'Back', articles_path %>
-    <%= link_to 'Edit', edit_article_path(@article) if current_user?(@article.user)  %>
-    <%= link_to "Like", like_article_path(@article), method: :put ,id:'btn_like', remote: true , :style => @voter.voted_up_on?(@article) ?  'display: none;' : 'display: inline;'   %>
-    <%= link_to "Dislike", dislike_article_path(@article), method: :put ,id:'btn_dislike', remote: true , :style => @voter.voted_up_on?(@article) ?  'display: inlinie;' : 'display: none;'    %>
-    </div>
-    <div class="col-xs-12  col-sm-12 col-md-12">
-      <p><%= link_to pluralize(@article.comments_count, "Comment"),  article_comments_path(@article)  %></p>
-    </div>
+<div class="row">
+  <div class="">
+    <p> <%= @article.content %></p>
+  </div>
+  <div class="col-xs-12  col-sm-12 col-md-12">
+     <%= image_tag @article.image.url(:mobile), :class =>'thumbnail' if @article.image.present? %>
+  </div>
+  <div id="vote" class="col-xs-12  col-sm-12 col-md-12">
+    <%= pluralize(@article.cached_votes_up, "Like") %>
   </div>
 
-  <div class="row">
-    <div class="col-xs-12  col-sm-12 col-md-12">
-    <%= render 'photos/photos_list' %>
-    </div>
+  <div class="col-xs-12  col-sm-12 col-md-12">
+  <%= link_to 'Back', articles_path %>
+  <%= link_to 'Edit', edit_article_path(@article) if current_user?(@article.user)  %>
+  <%= link_to "Like", like_article_path(@article), method: :put ,id:'btn_like', remote: true , :style => @voter.voted_up_on?(@article) ?  'display: none;' : 'display: inline;'   %>
+  <%= link_to "Dislike", dislike_article_path(@article), method: :put ,id:'btn_dislike', remote: true , :style => @voter.voted_up_on?(@article) ?  'display: inlinie;' : 'display: none;'    %>
+  <%= link_to pluralize(@article.comments_count, "Comment"),  article_comments_path(@article)  %>
   </div>
+  <div class="col-xs-12  col-sm-12 col-md-12">
+    <p></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12  col-sm-12 col-md-12">
+  <%= render 'photos/photos_list' %>
+  </div>
+</div>
 
