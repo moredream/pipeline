@@ -1,11 +1,11 @@
-ready = ->
+user_editor_ready = ->
   $('#user_editor').validate
     debug: false,
     rules:
       'user[username]': required: true
 
-$(document).ready(ready)
-$(document).on('page:load', ready)
+$(document).ready(user_editor_ready)
+$(document).on('page:load', user_editor_ready)
 
 jQuery ->
   new AvatarCropper()

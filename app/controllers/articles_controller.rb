@@ -27,12 +27,13 @@ class ArticlesController < ApplicationController
 
   def show
     @commentable = @article
-    @comments = @commentable.comments.available.page(params[:page]).per(10)
     @comment = Comment.new
+    # @comments = @commentable.comments.trending.page(params[:page]).per(10)
 
     # To-Do Photo List by Jquery Upload
     @attachable = @article
     @photos = @attachable.photos
+    @voter = current_user
 
   end
 
@@ -46,7 +47,6 @@ class ArticlesController < ApplicationController
       else
         render  'edit'
       end
-
   end
 
   def destroy
@@ -55,13 +55,27 @@ class ArticlesController < ApplicationController
   end
 
   def upvote
-    @article.liked_by current_user
-    redirect_to @article
+
+    respond_to do |format|
+      if @article.liked_by current_user
+        format.html { redirect_to @article, notice: "Thanks for vote!" }
+        format.js
+      else
+        render @article
+      end
+    end
   end
 
   def downvote
-    @article.downvote_from current_user
-    redirect_to @article
+
+    respond_to do |format|
+      if  @article.downvote_from current_user
+        format.html { redirect_to @article, notice: "Thanks for vote!" }
+        format.js
+      else
+        render @article
+      end
+    end
   end
 
 

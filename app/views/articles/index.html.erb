@@ -14,12 +14,19 @@
 </div>
 <h3></h3>
 
-<div  id="articles" class="row">
+<div id="articles" class="row">
 <%= render partial: "article", locals: { articles:  articles   } %>
 </div>
 
-<%= paginate articles %>
+<%= paginate articles  %>
 
 
 
 
+<% content_for :javascript do %>
+  <script type="text/javascript">
+
+
+
+  </script>
+<% end %>

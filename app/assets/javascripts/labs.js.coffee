@@ -3,32 +3,32 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
-ready = ->
+lab_editor_ready = ->
   $('#lab_editor').validate
     debug: false,
     rules:
       'lab[name]': required: true
 
 
-$(document).ready(ready)
-$(document).on('page:load', ready)
+$(document).ready(lab_editor_ready)
+$(document).on('page:load', lab_editor_ready)
 
 
-ready2 = ->
+lab_category_ready = ->
   $('#lab_category_tokens').tokenInput '/categories.json',
     theme: 'mac'
     preventDuplicates: true
     prePopulate: $('#lab_category_tokens').data('load')
 
-$(document).ready(ready2)
-$(document).on('page:load', ready2)
+$(document).ready(lab_category_ready)
+$(document).on('page:load', lab_category_ready)
 # ready = ->
 #   $('#lab_category').select2
 #     placeholder: 'Select Regions.'
 #     allowClear: true
 
 
-ready3 = ->
+lab_button_ready = ->
   changeTab = (e) ->
     e.preventDefault()
     name = $('#lab-desc').html()
@@ -43,5 +43,5 @@ ready3 = ->
   $("#lab-button").click changeTab
 
 
-$(document).ready(ready3)
-$(document).on('page:load', ready3)
+$(document).ready(lab_button_ready)
+$(document).on('page:load', lab_button_ready)

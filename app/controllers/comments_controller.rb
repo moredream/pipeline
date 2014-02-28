@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:destroy]
 
   def index
-    @comments = @commentable.comments.available.page(params[:page]).per(10)
+    @comments = @commentable.comments.trending.page(params[:page]).per(10)
   end
 
   def new
@@ -13,19 +13,28 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @commentable.comments.new(comment_params)
-
     @comment.user_id = current_user.id
 
-    if @comment.save
-      redirect_to @commentable, notice: "Comment created."
-    else
-      render :new
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to @commentable, notice: "Comment created." }
+        format.js
+      else
+        render 'new'
+      end
     end
+
+
   end
 
   def destroy
     @comment.destroy
-    redirect_to @commentable
+
+    respond_to do |format|
+      format.html { redirect_to @commentable }
+      format.js
+    end
+
   end
 
 

@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-ready = ->
+article_editor_ready = ->
   $('#article_editor').validate
     debug: false,
     rules:
@@ -10,28 +10,45 @@ ready = ->
       'article[tag_ids][]': required: true
 
 
-$(document).ready(ready)
-$(document).on('page:load', ready)
+$(document).ready(article_editor_ready)
+$(document).on('page:load', article_editor_ready)
 
-ready2 = ->
+article_tag_ready = ->
   $('#article_tag').select2
     placeholder: "Choose Keywords."
     allowClear: true
 
-$(document).ready(ready2)
-$(document).on('page:load', ready2)
+$(document).ready(article_tag_ready)
+$(document).on('page:load', article_tag_ready)
 
 
-endless = ->
-  if $('.pagination').length
-          $(window).scroll ->
-                  url = $('.pagination .next a').attr('href')
-                  if url &&  $(window).scrollTop() > $(document).height() - $(window).height() - 50
-                          $('.pagination').text('Loading more ...')
-                          $.getScript(url)
-    $(window).scroll()
+# endless = ->
+#   if $('.pagination').length and $('#articles').length
+#     $(window).scroll ->
+#       url = $('.pagination .next a').attr('href')
+#         $('.pagination').hide()
+#         if url &&  $(window).scrollTop() > $(document).height() - $(window).height() - 50
+#           $('.pagination').show().text('Loading more ...')
+#           $.getScript(url)
+
+#     $(window).scroll()
 
 
+# $(document).ready(endless)
+# $(document).on('page:load', endless)
 
-$(document).ready(endless)
-$(document).on('page:load', endless)
+onEndless = ->
+  if $('.pagination').length and $('#articles').length
+    $(window).off 'scroll', onEndless
+    url = $('.pagination .next a').attr('href')
+    $('.pagination').hide()
+    if url && $(window).scrollTop() > $(document).height() - $(window).height() - 150
+      $('.pagination').show().text('Loading more ...')
+      $.getScript url, ->
+        $(window).on 'scroll', onEndless
+    else
+      $(window).on 'scroll', onEndless
+
+$(window).on 'scroll', onEndless
+
+$(window).scroll()

@@ -1,9 +1,8 @@
 
-<ul class="media-list">
+<div class="media-list">
 <% @comments.each do |comment| %>
-  <%= render 'comments/comment_item', {comment: comment, commentable: @commentable} if comment.user.present? %>
+  <%= render 'comment_item', {comment: comment, commentable: @commentable} %>
 <% end %>
-</ul>
+</div>
 
-<%= paginate @comments %>
 
