@@ -51,7 +51,7 @@ accountpanel = ->
   $('#account').hide()
 
 
-jQuery ->
+$(document).on 'page:change', ->
   accountpanel()
 
   $('#my-avata').click (event) =>
