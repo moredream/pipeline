@@ -100,7 +100,7 @@ private
     if params[:q] || params[:tag_id]
       @articles ||= Article.search_tags(params[:q], params[:tag_id]).page(params[:page]).per(2)
     else
-      @articles ||= Article.trends('').page(params[:page]).per(2)
+      @articles ||= Article.trends('100').page(params[:page]).per(2)
     end
 
   end

@@ -11,7 +11,8 @@ class Article < ActiveRecord::Base
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   attr_readonly :comments_count
 
-  scope :trending,  lambda { |num = nil| includes(:user).where('created_at > ?', 15.day.ago).order('created_at  desc'). limit(num) }
+  scope :trending,  lambda { |num = nil| includes(:user).order('created_at  desc').limit(num) }
+  scope :hot,  lambda { |num = nil| includes(:user).order('cached_votes_up  desc').limit(num) }
   scope :available,  lambda { |num = nil| includes(:user).limit(num) }
 
   acts_as_votable
@@ -48,9 +49,9 @@ class Article < ActiveRecord::Base
 
   def self.trends(num)
     if num.present?
-      trending.limit(num)
+      hot.limit(num)
     else
-      trending
+      hot
     end
   end
 
