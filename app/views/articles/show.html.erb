@@ -1,19 +1,18 @@
 <% content_for :slidebar do %>
-<div class="article-bg">
   <div class="article">
-    <p><h4 class="text-center"><%= @article.title.titleize %></h4></p>
+    <p><h3 class="text-center"><%= @article.title.titleize %></h3></p>
     <h4 class="writer text-center"> <%= @article.to_writer %></h4>
     <%=render 'tag_items', {tags: @article.tags } %>
   </div>
-</div>
+
 <% end %>
 
 <div class="row">
   <div class="">
     <p> <%= @article.content %></p>
   </div>
-  <div class="col-xs-12  col-sm-12 col-md-12">
-     <%= image_tag @article.image.url(:mobile), :class =>'thumbnail' if @article.image.present? %>
+  <div class="focal-point right-1 up-1">
+    <div> <%= image_tag @article.image.url(:mobile), :class =>'thumbnail' if @article.image.present? %></div>
   </div>
   <div id="vote" class="col-xs-12  col-sm-12 col-md-12">
     <%= pluralize(@article.cached_votes_up, "Like") %>

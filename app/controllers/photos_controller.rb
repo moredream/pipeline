@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   before_action :load_attachable
-  before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  before_action :set_photo, only: [:show,  :destroy]
 
   def index
     @photos =  @attachable.photos
@@ -12,27 +12,21 @@ class PhotosController < ApplicationController
 
   def create
     @photo =  @attachable.photos.build(photo_params)
+
+    respond_to do |format|
     if @photo.save
-      redirect_to @attachable, notice: 'photo was successfully created'
+      format.html { redirect_to @attachable , notice: 'photo was successfully created'}
+      format.js
     else
-      render 'new'
+
+      format.html { render 'new' }
     end
+
+    end
+
   end
 
   def show
-
-  end
-
-  def edit
-
-  end
-
-  def update
-      if @photo.update(photo_params)
-        redirect_to @attachable, notice: 'photo was successfully updated.'
-      else
-        render  'edit'
-      end
 
   end
 

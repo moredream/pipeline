@@ -6,19 +6,22 @@
   <%= @program.content %>
 </div>
 <div class="row">
-  <%= render 'photos/photos_list' %>
-</div>
-<div class="row">
-  <%= render 'photos/form_inline' %>
-</div>
-<div class="row">
 <%= link_to pluralize(@program.comments_count, "Comment"),  program_comments_path(@program)  %>
 </div>
 
 <div class="row">
+  <%= render 'photos/photos_list' %>
+</div>
+<div class="row">
+  <%= render 'photos/form_inline' %>
+
+
+  <%= link_to "Add a Photo",   [:new , @attachable, :photo] ,:class => 'btn btn-default'%>
+</div>
+<div class="row">
   <div class="col-xs-12  col-sm-12 col-md-12">
     <%= link_to 'Edit', edit_program_path(@program) ,:class => 'btn btn-default'%> |
-    <%= link_to "Add a Photo",   [:new , @attachable, :photo] ,:class => 'btn btn-default'%>  |
+
     <%= link_to 'Back', programs_path ,:class => 'btn btn-default'%>
   </div>
 </div>

@@ -20,8 +20,8 @@ Pipeline::Application.routes.draw do
   resources :gurus
 
   concern :sociable do
-    resources :photos
-    resources :comments
+    resources :photos, only: [:index, :new, :create, :show, :destroy]
+    resources :comments, only: [:index, :new, :create, :show, :destroy]
   end
 
   # resources :articles, concerns: :sociable

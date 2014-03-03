@@ -1,17 +1,21 @@
 <div id ="photos">
 <% if @photos.any? %>
-
   <% for photo in @photos %>
-  <div class="col-xs-4  col-sm-3 col-md-3">
-      <div class="thumbnail">
-        <%= image_tag photo.image_url(:mobile) if photo.image? || photo.image.default_url%>
-        <div class="name"><%= photo.name %></div>
-        <div class="actions">
-          <%= link_to "edit", [:edit , @attachable, photo] %> |
-          <%= link_to "remove", [@attachable, photo], data: { confirm: 'Are you sure' } , :method => :delete %>
+
+  <div class="col-xs-12  col-sm-4 col-md-4">
+    <div class="thumbnail docs-container">
+        <div class="focal-point imagebox right-1 up-1">
+          <div><%=  image_tag(photo.image.url(:mobile), :class=> 'media-object') %></div>
         </div>
-      </div>
+        <div class="actions">
+            <%= link_to "remove", [@attachable, photo], data: { confirm: 'Are you sure' } , :method => :delete if current_user?(@attachable.user) %>
+        </div>
+    </div>
   </div>
   <% end %>
 <% end %>
 </div>
+
+
+
+

@@ -1,8 +1,8 @@
 <div class="media">
   <h4 class="media-heading"><%= link_to title.titleize, item , :class=>'post-title' %></h4>
   <div class="media-body">
-      <div class="crop">
-       <%= link_to image_tag(item.image.url(:mobile), :class=> 'place media-object') , item %>
+      <div class="focal-point imagebox right-1 up-1">
+        <div> <%= link_to image_tag(item.image.url(:mobile), :class=> 'media-object') , item %></div>
       </div>
   </div>
 </div>
