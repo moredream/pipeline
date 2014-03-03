@@ -12,7 +12,7 @@ before_action :authenticate_user!
   def create
     @guru = current_user.build_guru(guru_params)
     if @guru.save
-      redirect_to profile_path(current_user), success: 'guru was successfully created'
+      redirect_to current_user, success: 'guru was successfully created'
     else
       render 'new'
     end
