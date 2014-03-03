@@ -19,9 +19,7 @@
 
   <legend>Contact Info.</legend>
     <div class="form-group">
-      <div class="col-sm-2 control-label">
-        <span class='glyphicon glyphicon-home'></span>
-      </div>
+      <%= f.label 'Website', :class => 'col-sm-2 control-label' %>
       <div class="col-sm-10">
         <%= f.text_field :url, :class => 'form-control', :placeholder=>"url" %>
       </div>

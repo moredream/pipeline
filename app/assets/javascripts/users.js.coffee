@@ -7,6 +7,17 @@ user_editor_ready = ->
 $(document).ready(user_editor_ready)
 $(document).on('page:load', user_editor_ready)
 
+avata_editor_ready = ->
+  $('#avata_editor').validate
+    debug: false,
+    rules:
+      'user[image]': required: true
+
+$(document).ready(avata_editor_ready)
+$(document).on('page:load', avata_editor_ready)
+
+
+
 jQuery ->
   new AvatarCropper()
 
@@ -31,3 +42,35 @@ class AvatarCropper
                   height: Math.round(64/coords.h * $('#cropbox').height()) + 'px'
                   marginLeft: '-' + Math.round(64/coords.w * coords.x) + 'px'
                   marginTop: '-' + Math.round(64/coords.h * coords.y) + 'px'
+
+
+accountpanel = ->
+  $('#profile').hide()
+  $('#info').hide()
+  $('#password').hide()
+  $('#account').hide()
+
+
+jQuery ->
+  accountpanel()
+
+  $('#my-avata').click (event) =>
+    accountpanel()
+    $('#profile').show()
+    event.preventDefault()
+
+  $('#my-info').click (event) =>
+    accountpanel()
+    $('#info').show()
+    event.preventDefault()
+
+  $('#my-password').click (event) =>
+    accountpanel()
+    $('#password').show()
+    event.preventDefault()
+
+   $('#my-account').click (event) =>
+    accountpanel()
+    $('#account').show()
+    event.preventDefault()
+
