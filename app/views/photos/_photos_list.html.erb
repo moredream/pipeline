@@ -1,18 +1,6 @@
 <div id ="photos">
-<% if @photos.any? %>
-  <% for photo in @photos %>
-
-  <div class="col-xs-12  col-sm-4 col-md-4">
-    <div class="thumbnail docs-container">
-        <div class="focal-point imagebox right-1 up-1">
-          <div><%=  image_tag(photo.image.url(:mobile), :class=> 'media-object') %></div>
-        </div>
-        <div class="actions">
-            <%= link_to "remove", [@attachable, photo], data: { confirm: 'Are you sure' } , :method => :delete if current_user?(@attachable.user) %>
-        </div>
-    </div>
-  </div>
-  <% end %>
+<% for photo in @photos %>
+  <%= render(photo) %>
 <% end %>
 </div>
 

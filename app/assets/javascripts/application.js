@@ -12,6 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require tmpl.min.js
+//= require jquery.ui.widget.js
+//= require jquery.iframe-transport.js
+//= require jquery.fileupload.js
 //= require jquery.remotipart
 //= require jquery.Jcrop
 //= require jquery.validate
