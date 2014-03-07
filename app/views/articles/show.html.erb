@@ -25,14 +25,7 @@
   <%= link_to "Dislike", dislike_article_path(@article), method: :put ,id:'btn_dislike', remote: true , :style => @voter.voted_up_on?(@article) ?  'display: inlinie;' : 'display: none;'    %>
   <%= link_to pluralize(@article.comments_count, "Comment"),  article_comments_path(@article)  %>
   </div>
-  <div class="col-xs-12  col-sm-12 col-md-12">
-    <p></p>
-  </div>
 </div>
 
-<div class="row">
-  <div class="col-xs-12  col-sm-12 col-md-12">
-  <%= render 'photos/photos_list' %>
-  </div>
-</div>
+
 

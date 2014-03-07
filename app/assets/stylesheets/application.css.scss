@@ -1,24 +1,23 @@
 // Bootstrap-Sass
 @import "custom";
 
+
+
+// Responsive Image
+@import "focal-point.min";
+//Jquery Upload
+@import "jquery.fileupload";
+@import "jquery.fileupload-ui";
+
 // Vender
 @import "jquery.Jcrop";
 @import "token-input-mac";
 @import "select2";
 @import "select2-bootstrap";
-@import "focal-point.min";
-@import "jquery.fileupload";
-@import "jquery.fileupload-ui";
+@import "menu";
+@import "editor";
 
 // Models
 @import "articles";
 @import "photos";
-
 @import "labs";
-
-//grande
-@import "menu";
-@import "editor";
-
-
-

@@ -18,7 +18,6 @@ class PhotosController < ApplicationController
       format.html { redirect_to @attachable , notice: 'photo was successfully created'}
       format.js
     else
-
       format.html { render 'new' }
     end
 
@@ -35,6 +34,7 @@ class PhotosController < ApplicationController
     respond_to do |format|
       format.html { redirect_to @attachable }
       format.json { head :no_content }
+      format.js
     end
   end
 
@@ -54,6 +54,6 @@ private
   end
 
   def photo_params
-    params.require(:photo).permit(:name, :image,:remote_image_url)
+    params.require(:photo).permit(:name, :image)
   end
 end
