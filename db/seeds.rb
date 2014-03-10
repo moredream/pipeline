@@ -10,12 +10,19 @@ Tag.create( name: 'Food', level: 'default')
 Tag.create( name: 'Love', level: 'success')
 Tag.create( name: 'Jobs', level: 'primary')
 Tag.create( name: 'Language' ,level: 'default')
-Tag.create( name: 'House & Room', level: 'primary')
-Tag.create( name: 'Buy & Sell', level: 'primary')
+Tag.create( name: 'Rent', level: 'primary')
+Tag.create( name: 'Goods', level: 'primary')
 Tag.create( name: 'Q & A' ,level:  'info')
 Tag.create( name: 'Warning' ,level: 'warning')
 Tag.create( name: 'Danger', level: 'danger')
 
+Group.delete_all
+Group.create( name: 'Good', level: 'default')
+Group.create( name: 'Excellent', level: 'success')
+Group.create( name: 'Notice', level: 'primary')
+Group.create( name: 'Hot' ,level:  'info')
+Group.create( name: 'Cheap' ,level: 'warning')
+Group.create( name: 'Bad', level: 'danger')
 
 Category.delete_all
 

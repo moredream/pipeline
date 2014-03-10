@@ -1,0 +1,15 @@
+<% content_for :slidebar do %>
+
+<% end %>
+
+<h4 class="page-header">Papers</h4>
+
+<%= link_to 'New Paper', new_paper_path ,:class => 'btn btn-default' %>
+
+<div id="papers" class="row">
+<%= render partial: "paper", locals: { papers:  papers   } %>
+</div>
+
+<%= paginate papers  %>
+
+

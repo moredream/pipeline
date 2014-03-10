@@ -2,6 +2,8 @@ class Article < ActiveRecord::Base
   belongs_to :user
   has_many :photos, as: :attachable
   has_many :comments, as: :commentable
+  has_many :groups, through: :groupings
+  has_many :groupings
   has_many :tags, through: :taggings
   has_many :taggings
 
@@ -16,12 +18,6 @@ class Article < ActiveRecord::Base
   scope :available,  lambda { |num = nil| includes(:user).limit(num) }
 
   acts_as_votable
-
-  #
-  # scope :not_discontinued,  -> { where("discontinued_at is null or discontinued_at > ?", Time.zone.now) }
-  # scope :in_stock,          -> { where("stock >= ?", 2) }
-  # scope :available,         -> { released.not_discontinued.in_stock }
-
 
   def self.search(query)
     trending.where("title like ?", "%#{query}%")
@@ -41,6 +37,10 @@ class Article < ActiveRecord::Base
 
   def tag_list
     tags.map(&:name).join(", ")
+  end
+
+  def group_list
+    groups.map(&:name).join(", ")
   end
 
   def to_param

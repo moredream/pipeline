@@ -3,6 +3,8 @@
     <p><h3 class="text-center"><%= @article.title.titleize %></h3></p>
     <h4 class="writer text-center"> <%= @article.to_writer %></h4>
     <%=render 'tag_items', {tags: @article.tags } %>
+
+    <%=render 'tag_items', {tags: @article.groups } %>
   </div>
 
 <% end %>

@@ -5,7 +5,15 @@
   <%  tags.each do |tag| %>
   <%= link_to tag.name, tag_path(tag.name), class: tag_class(tag.level) %>
   <% end %>
+  </ul>
 
+</div>
+
+<div class="row tag_cloud">
+  <ul class="">
+  <%  groups.each do |group| %>
+  <li class="<%=tag_class(group.level) %>"><%= group.name %></li>
+  <% end %>
   </ul>
 
 </div>

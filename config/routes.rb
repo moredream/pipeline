@@ -6,17 +6,12 @@ Pipeline::Application.routes.draw do
     get page, controller: "info", action: page
   end
 
-
-  # devise_for :admin_users, ActiveAdmin::Devise.config
-
-  # ActiveAdmin.routes(self)
-
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks",registrations: "registrations"}
 
   resources :users , only: [:index, :show, :edit,:update]
 
 
-  resources :labs
+  resources :labs, :papers
   resources :gurus
 
   concern :sociable do

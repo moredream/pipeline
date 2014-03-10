@@ -28,9 +28,6 @@ class ArticlesController < ApplicationController
   def show
     @commentable = @article
     @comment = Comment.new
-    # @comments = @commentable.comments.trending.page(params[:page]).per(10)
-
-    # To-Do Photo List by Jquery Upload
     @attachable = @article
     @photos = @attachable.photos
     @voter = current_user
@@ -86,14 +83,21 @@ private
   end
 
   def article_params
-    params.require(:article).permit(:title, :content, :image,:tag_ids=>[])
+    params.require(:article).permit(:title, :content, :image,:tag_ids=>[],:group_ids=>[])
   end
+
+  def groups
+    @groups ||= Group.order(:name)
+  end
+
+  helper_method :groups
 
   def tags
     @tags ||= Tag.order(:name)
   end
 
   helper_method :tags
+
 
   def articles
 

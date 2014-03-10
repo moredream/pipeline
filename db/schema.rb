@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140228074305) do
+ActiveRecord::Schema.define(version: 20140310090731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,36 @@ ActiveRecord::Schema.define(version: 20140228074305) do
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
+  create_table "follows", force: true do |t|
+    t.integer  "followable_id",                   null: false
+    t.string   "followable_type",                 null: false
+    t.integer  "follower_id",                     null: false
+    t.string   "follower_type",                   null: false
+    t.boolean  "blocked",         default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "follows", ["followable_id", "followable_type"], name: "fk_followables", using: :btree
+  add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
+
+  create_table "groupings", force: true do |t|
+    t.integer  "group_id"
+    t.integer  "article_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "groupings", ["article_id"], name: "index_groupings_on_article_id", using: :btree
+  add_index "groupings", ["group_id"], name: "index_groupings_on_group_id", using: :btree
+
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.string   "level"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "gurus", force: true do |t|
     t.string   "name"
     t.string   "slug"
@@ -91,6 +121,18 @@ ActiveRecord::Schema.define(version: 20140228074305) do
   end
 
   add_index "labs", ["user_id"], name: "index_labs_on_user_id", using: :btree
+
+  create_table "papers", force: true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "user_id"
+    t.string   "image"
+    t.string   "link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "papers", ["user_id"], name: "index_papers_on_user_id", using: :btree
 
   create_table "photos", force: true do |t|
     t.string   "name"
