@@ -17,9 +17,7 @@ Tag.create( name: 'Warning' ,level: 'warning')
 Tag.create( name: 'Danger', level: 'danger')
 
 
-
 Category.delete_all
-
 
 Category.create( name: 'Harvard University')
 Category.create( name: 'Massachusetts Institute of Technology')

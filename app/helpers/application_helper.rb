@@ -11,6 +11,10 @@ module ApplicationHelper
     raw object.map { |t| link_to t.name, tag_path(t.name) }.join(', ')
   end
 
+  def current_user?(user)
+    user == current_user
+  end
+
   def place_image(object)
     if object.present?
        object
@@ -25,7 +29,6 @@ module ApplicationHelper
       user.image
     else
       default_url ="guest-128.png"
-
     end
   end
 
