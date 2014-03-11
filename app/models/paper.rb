@@ -5,9 +5,8 @@ class Paper < ActiveRecord::Base
 
   acts_as_followable
 
-  mount_uploader :image, ImageUploader
+  mount_uploader :image, FileUploader
 
-  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   attr_readonly :comments_count
 
   scope :trending,  lambda { |num = nil| includes(:user).order('papers.created_at  desc'). limit(num) }
@@ -20,4 +19,8 @@ class Paper < ActiveRecord::Base
      "By #{user.username} #{created_at.strftime("%B %d, %Y")}".titleize
   end
 
+  protected
+  def set_filename (name)
+    self.original_filename = name if name.present?
+  end
 end

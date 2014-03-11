@@ -11,12 +11,13 @@
     <p> <%= @paper.content %></p>
   </div>
   <div class="focal-point right-1 up-1">
-    <div> <%= image_tag @paper.image.url(:mobile), :class =>'thumbnail' if @paper.image.present? %></div>
+    <div> <%=link_to @paper.original_filename, @paper.image.url ,:class =>'thumbnail' , target: "_blank" if @paper.image.present? %></div>
   </div>
 
   <div class="col-xs-12  col-sm-12 col-md-12">
   <%= link_to 'Back', papers_path %>
   <%= link_to 'Edit', edit_paper_path(@paper) if current_user?(@paper.user)  %>
+  <%= link_to "Delete", @paper, method: :delete, data: { confirm: "You sure?" } if current_user?(@paper.user)  %>
   <%= link_to pluralize(@paper.comments_count, "Comment"),  paper_comments_path(@paper)  %>
   </div>
 </div>

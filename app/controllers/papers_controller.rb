@@ -2,7 +2,7 @@ class PapersController < ApplicationController
   before_action :authenticate_user!
   before_action :find_paper, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html, :json
+  respond_to :html, :json, :js
 
   def index
     respond_with(papers)
@@ -23,7 +23,6 @@ class PapersController < ApplicationController
     @commentable = @paper
     @comment = Comment.new
     @attachable = @paper
-    # @photos = @attachable.photos
   end
 
   def edit
@@ -37,7 +36,7 @@ class PapersController < ApplicationController
 
   def destroy
     @paper.destroy
-    redirect_to labs_url
+    redirect_to papers_path
   end
 
 private
@@ -51,7 +50,7 @@ private
   end
 
   def paper_params
-    params.require(:paper).permit(:title,:image, :content)
+    params.require(:paper).permit(:title,:image, :content, :link,:original_filename)
   end
 
 end
