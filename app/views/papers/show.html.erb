@@ -1,0 +1,22 @@
+<% content_for :slidebar do %>
+  <div class="article">
+    <p><h3 class="text-center"><%= @paper.title.titleize %></h3></p>
+    <h4 class="writer text-center"> <%= @paper.to_writer %></h4>
+  </div>
+
+<% end %>
+
+<div class="row">
+  <div class="">
+    <p> <%= @paper.content %></p>
+  </div>
+  <div class="focal-point right-1 up-1">
+    <div> <%= image_tag @paper.image.url(:mobile), :class =>'thumbnail' if @paper.image.present? %></div>
+  </div>
+
+  <div class="col-xs-12  col-sm-12 col-md-12">
+  <%= link_to 'Back', papers_path %>
+  <%= link_to 'Edit', edit_paper_path(@paper) if current_user?(@paper.user)  %>
+  <%= link_to pluralize(@paper.comments_count, "Comment"),  paper_comments_path(@paper)  %>
+  </div>
+</div>

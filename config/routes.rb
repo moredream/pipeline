@@ -14,16 +14,20 @@ Pipeline::Application.routes.draw do
   resources :labs, :papers
   resources :gurus
 
-  concern :sociable do
+  concern :photoable do
     resources :photos, only: [:index, :new, :create, :show, :destroy]
+  end
+
+  concern :commentable do
     resources :comments, only: [:index, :new, :create, :show, :destroy]
   end
 
   # resources :articles, concerns: :sociable
-  resources :programs, concerns: :sociable
+  resources :programs, concerns: [:photoable, :commentable]
+  resources :papers , concerns: :commentable
 
   resources :articles do
-    concerns :sociable
+    concerns :commentable
     member do
       put "like", to: "articles#upvote"
       put "dislike", to: "articles#downvote"

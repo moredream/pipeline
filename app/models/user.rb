@@ -6,21 +6,18 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,:recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-  #validates :slug, uniqueness: true, presence: true
-  #before_validation :generate_slug
   validates :username, presence: true
 
   has_many :articles, dependent: :destroy
   has_many :programs, dependent: :destroy
   has_many :labs, dependent: :destroy
-
+  has_many :papers, dependent: :destroy
   has_many :comments
 
   has_one :profile, inverse_of: :user, dependent: :destroy
   has_one :guru, inverse_of: :user
 
   delegate :guru?, :become_guru, to: :guru , :allow_nil => true
-  #delegate :image,  to: :profile , :allow_nil => true
 
   accepts_nested_attributes_for :profile
 
@@ -31,6 +28,8 @@ class User < ActiveRecord::Base
   after_update :crop_avatar
 
   acts_as_voter
+  acts_as_follower
+  acts_as_followable
 
  # scope :mentor, -> {where(membership_type: 'Member')}
 

@@ -9,18 +9,21 @@ class PapersController < ApplicationController
   end
 
   def new
-    @paper = Lab.new
+    @paper = Paper.new
     respond_with(@paper)
   end
 
   def create
-    @paper = current_user.labs.build(lab_params)
-    flash[:notice] = 'User was successfully created.' if @paper.save
+    @paper = current_user.papers.build(paper_params)
+    flash[:notice] = 'Paper was successfully created.' if @paper.save
     respond_with(@paper)
   end
 
   def show
-    respond_with(@paper)
+    @commentable = @paper
+    @comment = Comment.new
+    @attachable = @paper
+    # @photos = @attachable.photos
   end
 
   def edit
@@ -28,7 +31,7 @@ class PapersController < ApplicationController
   end
 
   def update
-    flash[:notice] = 'User was successfully created.' if @paper.update(lab_params)
+    flash[:notice] = 'Paper was successfully updated.' if @paper.update(paper_params)
     respond_with(@paper)
   end
 
@@ -44,11 +47,11 @@ private
   helper_method :papers
 
   def find_paper
-    @paper = Lab.find(params[:id])
+    @paper = Paper.find(params[:id])
   end
 
-  def lab_params
-    params.require(:lab).permit(:name,:image,:remote_image_url, :content, :category_tokens, :category_ids=>[])
+  def paper_params
+    params.require(:paper).permit(:title,:image, :content)
   end
 
 end
