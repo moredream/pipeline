@@ -8,10 +8,16 @@
 
 <div class="row">
   <div class="">
+    <p> <%= @paper.abstract %></p>
+  </div>
+  <div class="">
     <p> <%= @paper.content %></p>
   </div>
-  <div class="focal-point right-1 up-1">
-    <div> <%=link_to @paper.original_filename, @paper.image.url ,:class =>'thumbnail' , target: "_blank" if @paper.image.present? %></div>
+  <div class="">
+    <p> <%= @paper.link %></p>
+  </div>
+  <div class="">
+    <p>  <%=link_to @paper.original_filename, @paper.image.url ,:class =>'thumbnail' , target: "_blank" if @paper.image.present? %></p>
   </div>
 
   <div class="col-xs-12  col-sm-12 col-md-12">
