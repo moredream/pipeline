@@ -18,6 +18,7 @@
 //= require jquery.tokeninput
 //= require grande.min
 //= require select2
+//= require jquery.colorbox
 //= require turbolinks
 //= require_tree .
 //= require bootstrap

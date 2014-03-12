@@ -13,7 +13,8 @@ $(document).on 'page:change', ->
     acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
     context: $('#fileupload')[0]
 
-
+$(document).on 'page:change', ->
+  $('a.gallery').colorbox({ opacity:0.5 , rel:'group1'  })
 
 # $(document).on 'page:change', ->
 #   $('#fileupload').fileupload
