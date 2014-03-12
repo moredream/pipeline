@@ -4,8 +4,8 @@ class Article < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :groups, through: :groupings
   has_many :groupings
-  has_many :tags, through: :taggings
-  has_many :taggings
+  # has_many :tags, through: :taggings
+  # has_many :taggings
 
   validates :title, presence: true
   validates :user_id, presence: true
@@ -18,6 +18,7 @@ class Article < ActiveRecord::Base
   scope :available,  lambda { |num = nil| includes(:user).limit(num) }
 
   acts_as_votable
+  acts_as_taggable
 
   def self.search(query)
     trending.where("title like ?", "%#{query}%")
@@ -30,12 +31,12 @@ class Article < ActiveRecord::Base
     articles
   end
 
-  def self.tagged_with(name)
-    Tag.find_by_name!(name).articles
-    # includes(:tags, :user).where("tags.name = ?", name).references(:tags)
-  end
+  # def self.tagged_with(name)
+  #   Tag.find_by_name!(name).articles
+  #   # includes(:tags, :user).where("tags.name = ?", name).references(:tags)
+  # end
 
-  def tag_list
+  def tag_names
     tags.map(&:name).join(", ")
   end
 

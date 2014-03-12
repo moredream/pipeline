@@ -83,7 +83,7 @@ private
   end
 
   def article_params
-    params.require(:article).permit(:title, :content, :image,:tag_ids=>[],:group_ids=>[])
+    params.require(:article).permit(:title, :content, :image,:tag_list=>[], :tag_ids=>[],:group_ids=>[])
   end
 
   def groups
@@ -100,8 +100,9 @@ private
 
 
   def articles
-
-    if params[:q] || params[:tag_id]
+    if params[:tag]
+      @articles = Article.tagged_with(params[:tag]).page(params[:page]).per(2)
+    elsif params[:q] || params[:tag_id]
       @articles ||= Article.search_tags(params[:q], params[:tag_id]).page(params[:page]).per(2)
     else
       @articles ||= Article.trends('100').page(params[:page]).per(2)

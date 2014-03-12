@@ -69,6 +69,7 @@ gem 'omniauth-linkedin-oauth2'
 gem 'kaminari'
 gem 'acts_as_votable', '~> 0.8.0'
 gem "acts_as_follower"
+gem 'acts-as-taggable-on'
 
 group :development do
   gem 'better_errors'

@@ -6,7 +6,7 @@ article_editor_ready = ->
     debug: false,
     rules:
       'article[title]': required: true
-      'article[tag_ids][]': required: true
+      'article[tag_list][]': required: true
 
 
 $(document).ready(article_editor_ready)
