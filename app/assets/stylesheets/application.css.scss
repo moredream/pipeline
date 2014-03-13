@@ -1,8 +1,6 @@
 // Bootstrap-Sass
 @import "custom";
 
-
-
 // Responsive Image
 @import "focal-point.min";
 //Jquery Upload
@@ -16,9 +14,10 @@
 @import "select2-bootstrap";
 @import "menu";
 @import "editor";
-@import "colorbox";
 
 // Models
 @import "articles";
 @import "photos";
 @import "labs";
+
+// @import "colorbox";
