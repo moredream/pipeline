@@ -1,24 +1,20 @@
 <% papers.each do |paper| %>
- <div class="col-xs-12 col-sm-12 col-md-12">
-      <div class="thumbnail docs-container ">
-          <div class="media">
-            <h4 class="media-heading"><%= link_to paper.title.titleize, paper , :class=>'post-title' %></h4>
-            <div class="media-body">
-                <% if paper.image.present? %>
-                   <%= link_to paper.original_filename , paper , :class=> 'media-object'%>
-                <% end %>
-            </div>
-
-          </div>
-          <div class="media">
-            <p class="pull-left" >
-             <%= image_tag( paper.user.image.url(:thumb), :class=>'media-object img-circle' ,:size=>'32x32') %>
-            </p>
-            <h4 class="writer">
-              <p><%= paper.to_writer %> </p>
-              <p><%= pluralize(paper.comments_count, "Comment") %></p>
-            </h4>
-          </div>
-      </div>
-  </div>
+<div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="thumbnail docs-container ">
+        <div class="media">
+          <h4 class="media-heading"><%= link_to paper.title.titleize, paper , :class=>'post-title' %></h4>
+        </div>
+        <div class="media">
+          <h4 class="writer"><%= paper.type_list %></h4>
+        </div>
+        <div class="media">
+          <p class="pull-left" >
+           <%= image_tag( paper.user.image.url(:thumb), :class=>'media-object img-circle' ,:size=>'32x32') %>
+          </p>
+          <h4 class="writer">
+            <p><%= paper.to_writer %> </p>
+          </h4>
+        </div>
+    </div>
+</div>
 <% end %>

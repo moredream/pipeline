@@ -50,7 +50,7 @@ private
   end
 
   def paper_params
-    params.require(:paper).permit(:title,:image, :abstract, :content, :link,:original_filename)
+    params.require(:paper).permit(:title,:abstract, :content, :link, :type_list)
   end
 
 end

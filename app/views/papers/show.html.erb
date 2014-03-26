@@ -1,6 +1,7 @@
 <% content_for :slidebar do %>
   <div class="article">
     <p><h3 class="text-center"><%= @paper.title.titleize %></h3></p>
+    <p><h4 class="text-center"><%= @paper.type_list %></h4></p>
     <h4 class="writer text-center"> <%= @paper.to_writer %></h4>
   </div>
 
@@ -16,14 +17,11 @@
   <div class="">
     <p> <%= @paper.link %></p>
   </div>
-  <div class="">
-    <p>  <%=link_to @paper.original_filename, @paper.image.url ,:class =>'thumbnail' , target: "_blank" if @paper.image.present? %></p>
-  </div>
+
 
   <div class="col-xs-12  col-sm-12 col-md-12">
   <%= link_to 'Back', papers_path %>
   <%= link_to 'Edit', edit_paper_path(@paper) if current_user?(@paper.user)  %>
   <%= link_to "Delete", @paper, method: :delete, data: { confirm: "You sure?" } if current_user?(@paper.user)  %>
-  <%= link_to pluralize(@paper.comments_count, "Comment"),  paper_comments_path(@paper)  %>
   </div>
 </div>
