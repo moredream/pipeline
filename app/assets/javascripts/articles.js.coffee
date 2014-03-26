@@ -6,19 +6,11 @@ article_editor_ready = ->
     debug: false,
     rules:
       'article[title]': required: true
-      'article[tag_list][]': required: true
+      'article[group_list][]': required: true
 
 
 $(document).ready(article_editor_ready)
 $(document).on('page:load', article_editor_ready)
-
-article_tag_ready = ->
-  $('#article_tag').select2
-    placeholder: "Choose Keywords."
-    allowClear: true
-
-$(document).ready(article_tag_ready)
-$(document).on('page:load', article_tag_ready)
 
 $(document).on 'page:change', ->
   $('#tag_panel').hide()

@@ -4,8 +4,6 @@ class Article < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :groups, through: :groupings
   has_many :groupings
-  # has_many :tags, through: :taggings
-  # has_many :taggings
 
   validates :title, presence: true
   validates :user_id, presence: true
@@ -18,26 +16,20 @@ class Article < ActiveRecord::Base
   scope :available,  lambda { |num = nil| includes(:user).limit(num) }
 
   acts_as_votable
-  acts_as_taggable
 
   def self.search(query)
     trending.where("title like ?", "%#{query}%")
   end
 
-  def self.search_tags(keywords, tag_id)
+  def self.search_tags(keywords, group_id)
     articles = Article.available
     articles = articles.where("title like ?", "%#{keywords}%") if keywords.present?
-    articles = articles.includes(:tags).where("tags.id = ?", tag_id).references(:tags) if tag_id.present? and tag_id !=""
+    articles = articles.includes(:groups).where("groups.id = ?", group_id).references(:groups) if group_id.present? and group_id !=""
     articles
   end
 
-  # def self.tagged_with(name)
-  #   Tag.find_by_name!(name).articles
-  #   # includes(:tags, :user).where("tags.name = ?", name).references(:tags)
-  # end
-
-  def tag_names
-    tags.map(&:name).join(", ")
+  def self.group_with(name)
+    available.includes(:groups).where("groups.name = ?", name).references(:groups)
   end
 
   def group_list

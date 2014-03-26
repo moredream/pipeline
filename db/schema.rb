@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140312065513) do
+ActiveRecord::Schema.define(version: 20140325021907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,27 @@ ActiveRecord::Schema.define(version: 20140312065513) do
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "cached_votes_total",    default: 0
+    t.integer  "cached_votes_score",    default: 0
+    t.integer  "cached_votes_up",       default: 0
+    t.integer  "cached_votes_down",     default: 0
+    t.integer  "cached_weighted_score", default: 0
+    t.integer  "comments_count",        default: 0, null: false
+  end
+
+  add_index "events", ["cached_votes_down"], name: "index_events_on_cached_votes_down", using: :btree
+  add_index "events", ["cached_votes_score"], name: "index_events_on_cached_votes_score", using: :btree
+  add_index "events", ["cached_votes_total"], name: "index_events_on_cached_votes_total", using: :btree
+  add_index "events", ["cached_votes_up"], name: "index_events_on_cached_votes_up", using: :btree
+  add_index "events", ["cached_weighted_score"], name: "index_events_on_cached_weighted_score", using: :btree
+  add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
   create_table "follows", force: true do |t|
     t.integer  "followable_id",                   null: false

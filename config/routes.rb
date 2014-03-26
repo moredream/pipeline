@@ -10,7 +10,6 @@ Pipeline::Application.routes.draw do
 
   resources :users , only: [:index, :show, :edit,:update]
 
-
   resources :labs, :papers
   resources :gurus
 
@@ -34,9 +33,19 @@ Pipeline::Application.routes.draw do
     end
     collection { get :search, to: 'articles#search' }
   end
+
+  resources :events do
+    concerns :commentable
+    member do
+      put "like", to: "events#upvote"
+      put "dislike", to: "events#downvote"
+    end
+    collection { get :search, to: 'events#search' }
+  end
+
   resources :categories, only: [:index]
 
-  get 'trends/:tag', to: 'articles#index', as: :tag
+  get 'trends/:group', to: 'articles#index', as: :group
 
   get "welcome/index"
 

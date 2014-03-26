@@ -5,7 +5,6 @@ class ArticlesController < ApplicationController
 
   def index
 
-
   end
 
   def search
@@ -83,7 +82,7 @@ private
   end
 
   def article_params
-    params.require(:article).permit(:title, :content, :image,:tag_list=>[], :tag_ids=>[],:group_ids=>[])
+    params.require(:article).permit(:title, :content, :image,:group_ids=>[])
   end
 
   def groups
@@ -92,18 +91,12 @@ private
 
   helper_method :groups
 
-  def tags
-    @tags ||= Tag.order(:name)
-  end
-
-  helper_method :tags
-
 
   def articles
-    if params[:tag]
-      @articles = Article.tagged_with(params[:tag]).page(params[:page]).per(2)
-    elsif params[:q] || params[:tag_id]
-      @articles ||= Article.search_tags(params[:q], params[:tag_id]).page(params[:page]).per(2)
+    if params[:group]
+      @articles = Article.group_with(params[:group]).page(params[:page]).per(2)
+    elsif params[:q] || params[:group_id]
+      @articles ||= Article.search_tags(params[:q], params[:group_id]).page(params[:page]).per(2)
     else
       @articles ||= Article.trends('100').page(params[:page]).per(2)
     end

@@ -1,0 +1,33 @@
+<% content_for :slidebar do %>
+
+<% end %>
+
+<h4 class="page-header">Dash Board </h4>
+<%= link_to  'Action' , '#' , :id => 'article-search' ,:class =>"btn btn-link" %>
+<%= link_to  'Close' , '#' , :id => 'article-search-off' ,:class =>"btn btn-link" %>
+
+<div id="tag_panel">
+	<div class="row tag_cloud">
+	  <ul class="">
+	  <%= link_to 'All', events_path ,class: "label label-info tags" %>
+	  <% offers.each do |tag| %>
+	  <%= link_to tag.name, tag_path(tag.name), class: tag_class(tag.level) %>
+	  <% end %>
+	  </ul>
+	</div>
+	<div class="row">
+	  <div class="col-xs-12 col-sm-4 col-md-4">
+	    <%= link_to 'New Event', new_event_path ,:class => 'btn btn-default' %>
+	  </div>
+	  <div class="col-xs-12 col-sm-8 col-md-8 text-right ">
+	      <%= render 'search' %>
+	  </div>
+	</div>
+</div>
+
+<div id="articles" class="row">
+<%= render partial: "events", locals: { articles:  events   } %>
+</div>
+
+<%= paginate events  %>
+

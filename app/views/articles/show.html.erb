@@ -3,7 +3,6 @@
     <p><h3 class="text-center"><%= @article.title.titleize %></h3></p>
     <h4 class="writer text-center"> <%= @article.to_writer %></h4>
     <%=render 'tag_items', {tags: @article.groups } %>
-    <%=render 'tag_items', {tags: @article.tags } %>
   </div>
 
 <% end %>
@@ -13,7 +12,7 @@
     <p> <%= @article.content %></p>
   </div>
   <div class="">
-    <p> <%= @article.tag_names %></p>
+    <p> <%= @article.group_list %></p>
   </div>
   <div class="focal-point right-1 up-1">
     <div> <%= image_tag @article.image.url(:mobile), :class =>'thumbnail' if @article.image.present? %></div>
@@ -23,7 +22,7 @@
   </div>
 
   <div class="col-xs-12  col-sm-12 col-md-12">
-  <%= link_to 'Back', articles_path %>
+  <%= link_to 'Back', :back %>
   <%= link_to 'Edit', edit_article_path(@article) if current_user?(@article.user)  %>
   <%= link_to "Like", like_article_path(@article), method: :put ,id:'btn_like', remote: true , :style => @voter.voted_up_on?(@article) ?  'display: none;' : 'display: inline;'   %>
   <%= link_to "Dislike", dislike_article_path(@article), method: :put ,id:'btn_dislike', remote: true , :style => @voter.voted_up_on?(@article) ?  'display: inlinie;' : 'display: none;'    %>

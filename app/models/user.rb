@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   has_many :programs, dependent: :destroy
   has_many :labs, dependent: :destroy
   has_many :papers, dependent: :destroy
+  has_many :events, dependent: :destroy
+
   has_many :comments
 
   has_one :profile, inverse_of: :user, dependent: :destroy

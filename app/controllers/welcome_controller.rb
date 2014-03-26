@@ -3,8 +3,8 @@ class WelcomeController < ApplicationController
   respond_to :html, :json
 
   def index
-    @labs ||=  Lab.trending
-    respond_with(@labs)
+    @articles ||=  Article.trending
+    respond_with(@articles)
   end
 
 
