@@ -1,0 +1,8 @@
+<% @labs.each do |lab| %>
+	<div class="media">
+		<h4 class="media-heading"><%= link_to lab.name.titleize, lab , :class=>'post-title' %></h4>
+		<div class="media-body">
+		<%= truncate(lab.content , length: 140) if lab.content.present? %>
+		</div>
+	</div>
+<% end %>

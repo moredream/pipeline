@@ -8,7 +8,8 @@ class Paper < ActiveRecord::Base
 
 
   scope :trending,  lambda { |num = nil| includes(:user).order('papers.created_at  desc'). limit(num) }
-
+  scope :top,  lambda { |num = nil| order('created_at  asc').limit(num) }
+  
   def to_param
     "#{id}-#{title}".parameterize
   end

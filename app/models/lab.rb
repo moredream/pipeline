@@ -17,6 +17,7 @@ class Lab < ActiveRecord::Base
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
 
   scope :trending,  lambda { |num = nil| includes(:user).order('name  desc'). limit(num) }
+  scope :top,  lambda { |num = nil| order('created_at  asc').limit(num) }
 
   def category_tokens=(tokens)
     self.category_ids = Category.ids_from_tokens(tokens)

@@ -7,6 +7,9 @@ class UsersController < ApplicationController
   end
 
   def show
+  
+    @labs = find_user.labs.top(5)
+    @papers = find_user.papers.top(5)
 
   end
 
@@ -33,7 +36,7 @@ private
   helper_method :users
 
   def find_user
-    @user = User.find(params[:id])
+    @user ||= User.find(params[:id])
   end
 
   def user_params

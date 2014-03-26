@@ -1,0 +1,8 @@
+<% @papers.each do |paper| %>
+	<div class="media">
+		<h4 class="media-heading"><%= link_to paper.title.titleize, paper , :class=>'post-title' %></h4>
+		<div class="media-body">
+		<%= truncate(paper.abstract , length: 140) if paper.abstract.present? %>
+		</div>
+	</div>
+<% end %>

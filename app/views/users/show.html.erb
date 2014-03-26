@@ -15,9 +15,23 @@
 <%=@user.profile.bio%>
 </div>
 
-<h3 id="lab" class="page-header">Lab</h3>
+
+
+<h3 id="cite" class="page-header">Lab</h3>
 <div class="row docs-container">
 <%=@user.profile.lab%>
+</div>
+
+<h3 id="lab" class="page-header">Open Positions</h3>
+<div class="row docs-container">
+<%= render 'labs' %>
+<%= link_to 'more positions' , labs_path %>
+</div>
+
+<h3 id="lab" class="page-header">Papers</h3>
+<div class="row docs-container">
+<%= render 'cite' %>
+<%= link_to 'more papers' , papers_path %>
 </div>
 
 <h3 id="contacts" class="page-header">Contacts</h3>
