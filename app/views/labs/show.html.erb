@@ -10,19 +10,10 @@
 
 <div class="row lab-content">
   <div class="col-xs-12  col-sm-12">
-     <%=raw @lab.content %>
+     <%=@lab.content %>
   </div>
 </div>
 
-<h4><sapn class="label label-success">Univ.</sapn></h4>
-
-<div class="row lab-content">
-  <ul>
-    <% @lab.categories.each do |category| %>
-      <li class="token-input-token-mac"><%= category.name %></li>
-    <% end %>
-  </ul>
-</div>
 
 
 <div class="row lab-content">

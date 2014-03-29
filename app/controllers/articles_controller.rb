@@ -94,11 +94,11 @@ private
 
   def articles
     if params[:group]
-      @articles = Article.group_with(params[:group]).page(params[:page]).per(2)
+      @articles = Article.group_with(params[:group]).page(params[:page]).per(10)
     elsif params[:q] || params[:group_id]
-      @articles ||= Article.search_tags(params[:q], params[:group_id]).page(params[:page]).per(2)
+      @articles ||= Article.search_tags(params[:q], params[:group_id]).page(params[:page]).per(10)
     else
-      @articles ||= Article.trends('100').page(params[:page]).per(2)
+      @articles ||= Article.trends('100').page(params[:page]).per(10)
     end
 
   end

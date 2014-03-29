@@ -6,6 +6,8 @@
     </li>
     <% if current_user.guru? %>
     <li><%= current_user.guru.name %></li>
+    <li><%= link_to "Cite Me", papers_path  %></li>
+    <li><%= link_to "Positions", labs_path  %></li>
     <%else%>
     <li><%= link_to "Join mentoring", new_guru_path, class: "" %></li>
     <%end %>

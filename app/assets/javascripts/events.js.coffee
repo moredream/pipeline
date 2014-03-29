@@ -6,7 +6,7 @@ $(document).on 'page:change', ->
   $('#event_editor').validate
     debug: false,
     rules:
-      'event[name]': required: true
+      'event[title]': required: true
       'event[tag_list][]': required: true
 
 

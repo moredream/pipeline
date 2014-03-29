@@ -17,8 +17,8 @@ class User < ActiveRecord::Base
   has_many :comments
 
   has_one :profile, inverse_of: :user, dependent: :destroy
-  has_one :guru, inverse_of: :user
 
+  has_one :guru, inverse_of: :user, dependent: :destroy
   delegate :guru?, :become_guru, to: :guru , :allow_nil => true
 
   accepts_nested_attributes_for :profile
@@ -33,8 +33,7 @@ class User < ActiveRecord::Base
   acts_as_follower
   acts_as_followable
   
-  
- # scope :mentor, -> {where(membership_type: 'Member')}
+  # scope :mentor,  lambda { |num = nil| where(membership_type: 'Member').order('username  desc').limit(num) }
 
   def crop_avatar
     self.image.recreate_versions! if crop_x.present?

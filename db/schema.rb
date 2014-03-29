@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140325021907) do
+ActiveRecord::Schema.define(version: 20140329025840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(version: 20140325021907) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "events", force: true do |t|
-    t.string   "name"
     t.string   "content"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -81,6 +80,8 @@ ActiveRecord::Schema.define(version: 20140325021907) do
     t.integer  "cached_votes_down",     default: 0
     t.integer  "cached_weighted_score", default: 0
     t.integer  "comments_count",        default: 0, null: false
+    t.string   "target"
+    t.string   "title"
   end
 
   add_index "events", ["cached_votes_down"], name: "index_events_on_cached_votes_down", using: :btree

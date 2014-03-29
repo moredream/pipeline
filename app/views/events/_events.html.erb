@@ -2,15 +2,19 @@
  <div class="col-xs-12 col-sm-12 col-md-12">
       <div class="thumbnail docs-container ">
           <div class="media">
-            <h4 class="media-heading"><%= link_to event.name.titleize, event , :class=>'post-title' %></h4>
+            <h4 class="media-heading"><%= link_to event.title.titleize, event , :class=>'post-title' %></h4>
             <div class="media-body">
-
+                <% if event.target.present? %>
+                  <div class="focal-point imagebox right-1 up-1">
+                    <div> <%= link_to image_tag(event.target.url(:mobile), :class=> 'media-object') , event %></div>
+                  </div>
+                <% end %>
             </div>
 
           </div>
           <div class="media">
             <p class="pull-left" >
-             <%= image_tag(event.user.image.url(:thumb), :class=>'media-object img-circle' ,:size=>'32x32') %>
+             <%= image_tag(event.profile_pic, :class=>'media-object img-circle' ,:size=>'32x32') %>
             </p>
             <h4 class="writer">
               <p><%= event.to_writer %> </p>

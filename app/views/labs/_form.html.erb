@@ -3,8 +3,8 @@
 <%= form_for  @lab , :html => {:id=>'lab_editor' , :multipart=>true, :class=>''} do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
     <div class="form-group">
-      <%= f.label :name, :class => 'control-label' %>
-      <%= f.text_field :name, :class => 'form-control', :placeholder=>"Title" %>
+      <%= f.label 'Title', :class => 'control-label' %>
+      <%= f.text_field :name, :class => 'form-control', :placeholder=>"Job Title" %>
     </div>
 
     <div class="form-group">
@@ -13,14 +13,8 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :content, :class => 'control-label' %>
-      <%= f.hidden_field :content, :class => 'form-control', :placeholder=>"" %>
-      <article class="content solidbox" id="lab-desc"><%=raw @lab.content%></article>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :category_tokens, "Universities" %>
-      <%= f.text_field :category_tokens ,data: {load: @lab.categories} , :class => 'form-control', :placeholder=>"Universities" %>
+      <%= f.label 'Description', :class => 'control-label' %>
+      <%= f.text_area :content, :class => 'form-control', :placeholder=>"Job Description" , :rows=>"10"%>
     </div>
 
     <div class="form-group">
