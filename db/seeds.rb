@@ -16,4 +16,4 @@ Group.create( name: 'Event', level: 'danger')
 
 
 
-
+Event.delete_all
