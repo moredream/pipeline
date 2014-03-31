@@ -1,5 +1,5 @@
 
-<%= render 'shared/link_to_profile' %>
+<%= render 'shared/link_to_profile'  if current_user?(@user) %>
 
 <div class="row docs-container">
   <div class="col-xs-3 col-sm-3 col-md-3">

@@ -1,6 +1,7 @@
 class GurusController < ApplicationController
-before_action :authenticate_user!
-
+  before_action :authenticate_user!
+  before_action :find_user, only: [:show, :edit,:update,:destroy]
+  
   def index
 
   end
@@ -18,6 +19,22 @@ before_action :authenticate_user!
     end
   end
 
+  def show
+  
+  end
+
+  def edit
+
+  end
+
+  def update
+    if @guru.update(guru_params)
+        redirect_to @guru, notice: 'User was successfully updated.'
+    else
+      render action: 'edit'
+    end
+  end
+
   def destroy
     @guru.destroy
     redirect_to root_url
@@ -26,8 +43,10 @@ before_action :authenticate_user!
   private
 
     def guru_params
-      params.require(:guru).permit(:name, :slug, :account, :link)
+      params.require(:guru).permit(:name, :slug, :account, :link, :content)
     end
-
+    def find_user
+      @guru ||= current_user.guru
+    end
 end
 

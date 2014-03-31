@@ -11,7 +11,7 @@ Pipeline::Application.routes.draw do
   resources :users , only: [:index, :show, :edit,:update]
 
   resources :labs, :papers
-  resources :gurus
+  resources :gurus, only: [:new, :create,  :edit, :update, :destroy]
 
   concern :photoable do
     resources :photos, only: [:index, :new, :create, :show, :destroy]
