@@ -23,7 +23,7 @@
 
 
 <div id="articles" class="row">
-<%= render partial: "events", locals: { articles:  events   } %>
+<%= render partial: "events", locals: { articles:  events   } if events.present? %>
 </div>
 
 <%= paginate events  %>
