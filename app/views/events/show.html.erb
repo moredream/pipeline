@@ -3,14 +3,15 @@
     <p><h3 class="text-center"><%= @event.title.titleize %></h3></p>
     <h4 class="writer text-center"> <%= @event.to_writer %></h4>
   </div>
-  <div class="focal-point imagebox right-1 up-1">
-    <div><%= image_tag @event.target.url(:mobile), :class =>'thumbnail' if @event.target.present? %></div>
-  </div>
+
 <% end %>
 
 <div class="row">
   <div class="">
     <p> <%= @event.content %></p>
+  </div>  
+  <div class="focal-point imagebox2 right-1 up-1">
+    <%= image_tag @event.target.url(:mobile), :class =>'thumbnail' if @event.target.present? %>
   </div>
   <div class="">
     <p> <%= @event.offer_list %></p>
