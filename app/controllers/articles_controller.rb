@@ -86,7 +86,8 @@ private
   end
 
   def groups
-    @groups ||= Group.order(:name)
+    # @groups ||= Group.order(:name)
+    @groups ||= Group.cached_groups
   end
 
   helper_method :groups

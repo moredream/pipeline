@@ -175,14 +175,16 @@ ActiveRecord::Schema.define(version: 20140331075127) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "bio"
+    t.integer  "user_id",    null: false
     t.string   "twitter"
     t.string   "linkedin"
     t.string   "google"
-    t.integer  "user_id"
     t.string   "mobile"
     t.string   "url"
     t.text     "lab"
   end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", unique: true, using: :btree
 
   create_table "programs", force: true do |t|
     t.string   "title"
@@ -230,8 +232,8 @@ ActiveRecord::Schema.define(version: 20140331075127) do
     t.string   "provider"
     t.string   "uid"
     t.string   "username"
-    t.string   "slug"
     t.string   "image"
+    t.string   "slug"
     t.string   "grade"
   end
 

@@ -17,6 +17,15 @@ class Article < ActiveRecord::Base
 
   acts_as_votable
 
+
+  # def self.cached_published
+  #   # updated_at = published.maximum(:updated_at)
+  #   Rails.cache.fetch([name, "published"], expires_in: 5.minutes) do
+  #     published.to_a
+  #   end
+  # end
+
+
   def self.search(query)
     trending.where("title like ?", "%#{query}%")
   end

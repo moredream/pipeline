@@ -7,7 +7,8 @@ class UsersController < ApplicationController
   end
 
   def show
-  
+
+    @user.create_profile if @user.profile.nil?
     @labs = find_user.labs.top(5)
     @papers = find_user.papers.top(5)
 

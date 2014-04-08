@@ -35,8 +35,12 @@ class Event < ActiveRecord::Base
     end
   end
 
-  def self.offers
-	ActsAsTaggableOn::Tag.includes(:taggings).where("taggings.context = 'offers'")
+ #  def self.offers
+	# # ActsAsTaggableOn::Tag.includes(:taggings).where("taggings.context = 'offers'")
+ #  end
+
+  def self.cached_offers
+    Rails.cache.fetch([self, "offers"]) { ActsAsTaggableOn::Tag.includes(:taggings).where("taggings.context = 'offers'").to_a }
   end
 
   def to_param

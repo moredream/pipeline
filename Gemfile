@@ -70,21 +70,29 @@ gem 'kaminari'
 gem 'acts_as_votable', '~> 0.8.0'
 gem "acts_as_follower"
 gem 'acts-as-taggable-on'
+gem 'dalli'
+
+group :staging do
+  gem 'ruby-prof'
+
+end
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
-  gem 'rack-mini-profiler'
-  gem 'bullet'
-end
 
-gem "rspec-rails", :group => [:test, :development]
-gem "populator", :group => [:test, :development]
-gem "faker", :group => [:test, :development]
+end
 
 group :test do
   gem "factory_girl_rails"
   gem "capybara"
   gem "guard-rspec"
 end
+gem 'rack-mini-profiler', :group => [:test, :development,:staging]
+gem 'bullet', :group => [:test, :development, :staging]
+gem "rspec-rails", :group => [:test, :development]
+gem "populator", :group => [:test, :development]
+gem "faker", :group => [:test, :development]
+
+

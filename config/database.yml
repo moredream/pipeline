@@ -51,6 +51,14 @@ test:
   username: moredream
   password:
 
+staging:
+  adapter: postgresql
+  encoding: unicode
+  database: pipeline_staging
+  pool: 5
+  username: moredream
+  password:
+
 production:
   adapter: postgresql
   encoding: unicode

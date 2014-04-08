@@ -82,7 +82,7 @@ class EventsController < ApplicationController
 	end
 
 	def offers 
-		@offers ||= Event.offers
+		@offers ||= Event.cached_offers
 	end
 
 	helper_method :offers
